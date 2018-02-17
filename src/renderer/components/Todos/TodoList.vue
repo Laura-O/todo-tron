@@ -7,6 +7,7 @@
 <script>
 export default {
     name: 'todolist',
+    computed: {},
     components: {},
     props: ['todos'],
     methods: {

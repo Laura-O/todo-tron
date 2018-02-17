@@ -11,14 +11,24 @@
 import TodoList from './Todos/TodoList';
 
 const fs = require('fs');
-// const todotxt = require('todotxt');
+const todotxt = require('todotxt');
 
 export default {
     name: 'todos',
     data() {
         return {
-            todos: [],
+            // todos: [],
         };
+    },
+    computed: {
+        todos: {
+            get() {
+                return this.$store.state.Todos.todos;
+            },
+            set(value) {
+                this.$store.commit('addTodos', value);
+            },
+        },
     },
     components: { TodoList },
     methods: {
@@ -53,7 +63,8 @@ export default {
                     const allLines = content.split(/\r\n|\n/);
                     // Filter empty lines in array
                     const rawTodos = allLines.filter((x) => x !== (undefined || null || ''));
-                    this.todos = rawTodos;
+                    this.todos = todotxt.parse(rawTodos);
+                    this.$store.commit('addTodos', todotxt.parse(rawTodos));
                 } else {
                     self.openDialog('error', err.toString());
                 }
