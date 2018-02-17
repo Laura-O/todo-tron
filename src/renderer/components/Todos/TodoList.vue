@@ -1,6 +1,20 @@
 <template>
   <div class="list">
       <input placeholder="Filter by Name" icon="search" v-model="searchTerm">
+      <div class="field">
+            <b-tag v-if="context"
+                type="is-primary"
+                closable
+                @close="context = ''">
+                {{context}}
+            </b-tag>
+            <b-tag v-if="project"
+                type="is-primary"
+                closable
+                @close="project = ''">
+                {{project}}
+            </b-tag>
+        </div>
    <table>
        <thead>
             <tr>
