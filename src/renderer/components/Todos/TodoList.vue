@@ -15,9 +15,10 @@
                 {{project}}
             </b-tag>
         </div>
-   <table>
+   <table class="table is-hoverable is-fullwidth">
        <thead>
             <tr>
+                <th>Select</th>
                 <th>Prio</th>
                 <th>Task</th>
                 <th>Contexts</th>
@@ -25,7 +26,8 @@
             </tr>
        </thead>
        <tbody>
-           <tr v-for="todo in currentTodos" :key="todo.number">                
+           <tr v-for="todo in currentTodos" :key="todo.number">
+               <td><b-checkbox v-model="selectedTodos" :native-value="todo"></b-checkbox></td>
                <td>{{todo.priority}}</td>
                <td>{{todo.text}}</td>
                <td>
@@ -47,6 +49,7 @@ export default {
             searchTerm: '',
             context: '',
             project: '',
+            selectedTodos: [],
         };
     },
     name: 'todolist',
