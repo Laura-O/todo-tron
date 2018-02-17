@@ -1,15 +1,19 @@
 <template>
   <div id="wrapper">    
-    <todos></todos>
+    <sidebar></sidebar>
+  <div>
+
+  </div>
   </div>
 </template>
 
 <script>
+import Sidebar from './Sidebar';
 import Todos from './Todos';
 
 export default {
     name: 'main-view',
-    components: { Todos },
+    components: { Sidebar, Todos },
     methods: {
         open(link) {
             this.$electron.shell.openExternal(link);

@@ -2,7 +2,7 @@
   <div class="main-wrapper">    
     <button @click="openTodos">Button</button>
     <div>
-       <todo-list :todos="todos"></todo-list>
+       <todo-list :todos="todos" :columns="columns"></todo-list>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
     name: 'todos',
     data() {
         return {
-            // todos: [],
+            columns: ['Priority', 'Task', 'Context', 'Projects'],
         };
     },
     computed: {
@@ -75,14 +75,5 @@ export default {
 </script>
 
 <style>
-.main-wrapper {
-    position: absolute;
-    top: 0;
-    left: 100px;
-    right: 0;
-    bottom: 120px;
-    margin-left: 0;
-    overflow: visible;
-    z-index: 1;
-}
+
 </style>
