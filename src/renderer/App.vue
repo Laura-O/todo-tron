@@ -11,6 +11,11 @@ export default {
 </script>
 
 
-<style>
+<style lang="scss">
 @import '~bulma/css/bulma.css';
+
+$primary: #f81ce5;
+
+@import '~bulma';
+@import '~buefy/src/scss/buefy';
 </style>
