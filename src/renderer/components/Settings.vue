@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">    
-
+      <button @click="openTodos">Button</button>
   <div>
 
   </div>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-    name: 'main-view',
+    name: 'settings',
     components: {},
     methods: {
         open(link) {
