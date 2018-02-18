@@ -1,6 +1,7 @@
 <template>
   <div id="wrapper">    
-      <button @click="openTodos">Button</button>
+      <button @click="setPath">Button</button>
+      {{path}}
   <div>
 
   </div>
@@ -11,9 +12,39 @@
 export default {
     name: 'settings',
     components: {},
+    computed: {
+        path: {
+            set(value) {
+                this.$store.commit('addPath', value);
+            },
+            get() {
+                return this.getPath();
+            },
+        },
+    },
     methods: {
-        open(link) {
-            this.$electron.shell.openExternal(link);
+        getPath() {
+            const settings = require('electron').remote.require('electron-settings');
+            return settings.get('path');
+        },
+        setPath() {
+            const dialog = this.$electron.remote.dialog;
+            dialog.showOpenDialog(
+                {
+                    filters: [
+                        {
+                            name: 'Documents',
+                            extensions: ['txt', 'md'],
+                        },
+                    ],
+                    properties: ['openFile'],
+                },
+                (item) => {
+                    if (item) {
+                        this.$store.commit('changePath', item);
+                    }
+                },
+            );
         },
     },
 };
