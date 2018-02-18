@@ -1,7 +1,7 @@
 <template>
-  <div id="wrapper">    
+  
     <todos></todos>
-  </div>
+  
 </template>
 
 <script>

@@ -16,16 +16,16 @@ export default {
 
 
 <style lang="scss">
-@import '~bulma/css/bulma.css';
-
-@import '~bulma';
-@import '~buefy/src/scss/buefy';
+@import '~bulma/sass/utilities/_all';
 
 // Set your colors
-$primary: #8c67ef;
+$primary: #ff1744;
 $primary-invert: findColorInvert($primary);
 $twitter: #4099ff;
 $twitter-invert: findColorInvert($twitter);
+
+$dark: #212121;
+$dark-invert: findColorInvert($dark);
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
@@ -45,4 +45,28 @@ $colors: (
 $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
+
+$table-cell-border-width: 0 0 0;
+
+@import '~bulma';
+@import '~buefy/src/scss/buefy';
+
+.table.is-scrollable tbody {
+    overflow-y: scroll;
+}
+
+#app {
+    background-color: #212121;
+    color: white;
+}
+
+.main-wrapper {
+    height: 100%;
+}
+
+.table,
+.thead {
+    background-color: #212121;
+    color: white !important;
+}
 </style>

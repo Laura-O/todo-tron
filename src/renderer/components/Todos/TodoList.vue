@@ -15,30 +15,35 @@
                 {{project}}
             </b-tag>
         </div>
-   <table class="table is-hoverable is-fullwidth">
-       <thead>
-            <tr>
-                <th>Select</th>
-                <th>Prio</th>
-                <th>Task</th>
-                <th>Contexts</th>
-                <th>Projects</th>
-            </tr>
-       </thead>
-       <tbody>
-           <tr v-for="todo in currentTodos" :key="todo.number">
-               <td><b-checkbox v-model="selectedTodos" :native-value="todo"></b-checkbox></td>
-               <td>{{todo.priority}}</td>
-               <td>{{todo.text}}</td>
-               <td>
-                   <p v-for="(context) in todo.contexts" :key="context" @click="selectContext(context)">{{context}}</p>
-                </td>
-               <td>
-                    <p v-for="(project) in todo.projects" :key="project" @click="selectProject(project)">{{project}}</p>
-               </td>
-            </tr>
-       </tbody>
-   </table>
+
+        <div class="table-wrapper">
+            <table class="table">    
+                <thead>
+                <tr>
+                    <th class="check">S</th>
+                    <th class="prio">P</th>
+                    <th class="task">T</th>
+                    <th class="contexts">C</th>
+                    <th class="projects">P</th>
+                </tr>
+            </thead> 
+            </table>
+            <table class="table is-fullwidth todo-table is-dark">                
+                <tbody class="is-dark">
+                    <tr v-for="todo in currentTodos" :key="todo.number">
+                        <td class="check"><b-checkbox type="is-danger" v-model="selectedTodos" :native-value="todo"></b-checkbox></td>
+                        <td class="prio">{{todo.priority}}</td>
+                        <td class="task">{{todo.text}}</td>
+                        <td class="contexts">
+                            <p class="p-tags" v-for="(context) in todo.contexts" :key="context" @click="selectContext(context)">{{context}}</p>
+                            </td>
+                        <td class="projects">
+                                <p class="p-tags" v-for="(project) in todo.projects" :key="project" @click="selectProject(project)">{{project}}</p>
+                        </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
   </div>
 </template>
 
@@ -92,6 +97,46 @@ export default {
 };
 </script>
 
-<style>
+<style <style scoped>
+.todo-table {
+    font-size: 14px;
+}
 
+.table-wrapper {
+    margin: 15px;
+    border-radius: 5px;
+    border: 1px solid #ff1744;
+    height: 500px;
+    padding: 5px;
+}
+
+.check,
+.prio {
+    width: 10px;
+}
+
+.task {
+    width: 200px;
+}
+
+.contexts,
+.projects {
+    width: 40px;
+}
+
+p {
+    display: inline-block;
+    margin: 5px;
+    padding: 2px 3px;
+}
+
+p.p-tags {
+    border: 1px solid #3f51b5;
+    border-radius: 5px;
+    transition: border-color 0.45s ease-in-out;
+}
+
+p:hover {
+    border-color: #ff1744;
+}
 </style>
