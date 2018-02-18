@@ -41,7 +41,7 @@ export default {
                 },
                 (item) => {
                     if (item) {
-                        this.$store.commit('changePath', item);
+                        this.$store.commit('changePath', item[0]);
                     }
                 },
             );

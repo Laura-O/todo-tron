@@ -1,6 +1,5 @@
 <template>
   <div class="main-wrapper">    
-    <button @click="openTodos">Button</button>
     <div>
        <todo-list :todos="todos" :columns="columns"></todo-list>
     </div>
@@ -9,7 +8,7 @@
 
 <script>
 import TodoList from './Todos/TodoList';
-
+const storage = require('electron').remote.require('electron-settings');
 const fs = require('fs');
 const todotxt = require('todotxt');
 
@@ -21,6 +20,11 @@ export default {
         };
     },
     computed: {
+        path: {
+            get() {
+                return this.getPath();
+            },
+        },
         todos: {
             get() {
                 return this.$store.state.Todos.todos;
@@ -32,9 +36,6 @@ export default {
     },
     components: { TodoList },
     methods: {
-        open(link) {
-            this.$electron.shell.openExternal(link);
-        },
         openTodos() {
             const self = this;
             const dialog = this.$electron.remote.dialog;
@@ -70,6 +71,14 @@ export default {
                 }
             });
         },
+    },
+    created() {
+        if (this.$store.state.Todos.todos.length <= 0) {
+            if (storage.has('path')) {
+                const path = storage.get('path');
+                this.readFile(path);
+            }
+        }
     },
 };
 </script>
