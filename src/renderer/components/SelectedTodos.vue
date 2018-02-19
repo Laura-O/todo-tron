@@ -15,7 +15,7 @@ export default {
     methods: {},
     computed: {
         selectedTodos() {
-            return this.$store.state.Todos.selectedTodos;
+            return this.$store.state.Timer.taskList;
         },
     },
 };

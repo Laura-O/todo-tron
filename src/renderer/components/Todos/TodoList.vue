@@ -83,7 +83,7 @@ export default {
     },
     watch: {
         selectedTodos(selectedTodos) {
-            this.$store.commit('selectTodos', selectedTodos);
+            this.$store.commit('selectTasks', selectedTodos);
         },
     },
     components: {},
