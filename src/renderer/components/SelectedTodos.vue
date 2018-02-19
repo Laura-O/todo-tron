@@ -1,15 +1,17 @@
 <template>
-    <div>
+    <div class="selected-wrapper">
         <div v-for="todo in selectedTodos" :key="todo.number">
-            {{todo.text}}
+            <selected-element :todo="todo"></selected-element>
         </div>
   </div>
 </template>
 
 <script>
+import SelectedElement from './SelectedTodos/SelectedElement';
+
 export default {
     name: 'selected-todos',
-    components: {},
+    components: { SelectedElement },
     methods: {},
     computed: {
         selectedTodos() {
@@ -20,5 +22,7 @@ export default {
 </script>
 
 <style>
-
+.selected-wrapper {
+    margin: 10px;
+}
 </style>

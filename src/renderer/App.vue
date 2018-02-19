@@ -47,6 +47,7 @@ $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
 $table-cell-border-width: 0 0 0;
+$box-radius: 5px;
 
 @import '~bulma';
 @import '~buefy/src/scss/buefy';
