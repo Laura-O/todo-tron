@@ -105,7 +105,7 @@ export default {
 .table-wrapper {
     margin: 15px;
     border-radius: 5px;
-    border: 1px solid #ff1744;
+    border: 1px solid #01d5da;
     height: 500px;
     padding: 5px;
 }
@@ -138,5 +138,35 @@ p.p-tags {
 
 p:hover {
     border-color: #ff1744;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #ff1744;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #01d5da;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: #01d5da;
+    background-image: -webkit-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 75%,
+        transparent
+    );
 }
 </style>
