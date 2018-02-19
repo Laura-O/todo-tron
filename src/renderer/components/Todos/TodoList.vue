@@ -131,7 +131,7 @@ p {
 }
 
 p.p-tags {
-    border: 1px solid #3f51b5;
+    border: 2px solid #3f51b5;
     border-radius: 5px;
     transition: border-color 0.45s ease-in-out;
 }
@@ -142,14 +142,14 @@ p:hover {
 
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: #ff1744;
+
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
 }
 
 ::-webkit-scrollbar {
     width: 10px;
-    background-color: #01d5da;
+
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
 }

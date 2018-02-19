@@ -55,18 +55,7 @@ $table-cell-border-width: 0 0 0;
     overflow-y: scroll;
 }
 
-#app {
-    background-color: #212121;
-    color: white;
-}
-
 .main-wrapper {
     height: 100%;
-}
-
-.table,
-.thead {
-    background-color: #212121;
-    color: white !important;
 }
 </style>
