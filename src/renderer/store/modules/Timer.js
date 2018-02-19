@@ -4,16 +4,23 @@ const state = {
 };
 
 const mutations = {
-    selectTasks(state, selectedTodos) {
-        state.taskList = selectedTodos;
+    selectTask(state, todo) {
+        state.taskList.push(todo);
+    },
+
+    removeTask(state, todo) {
+        state.taskList.splice(state.taskList.indexOf(todo), 1);
     },
 };
 
 const getters = {};
 
 const actions = {
-    selectTasks({ commit }, payload) {
-        commit('selectTasks', payload);
+    selectTask({ commit }, payload) {
+        commit('selectTask', payload);
+    },
+    removeTask({ commit }, payload) {
+        commit('removeTask', payload);
     },
 };
 

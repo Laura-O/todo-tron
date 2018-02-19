@@ -16,22 +16,24 @@
             </b-tag>
         </div>
 
-        <div class="table-wrapper">
-            <table class="table">    
+        <div class="header-wrapper">     
+            <table class="table table-header">    
                 <thead>
-                <tr>
-                    <th class="check">S</th>
-                    <th class="prio">P</th>
-                    <th class="task">T</th>
-                    <th class="contexts">C</th>
-                    <th class="projects">P</th>
+                <tr>                    
+                    <th class="prio"><font-awesome-icon :icon="prioIcon" /></th>
+                    <th class="task"><font-awesome-icon :icon="listIcon" /></th>
+                    <th class="contexts"><font-awesome-icon :icon="locationIcon" /></th>
+                    <th class="projects"><font-awesome-icon :icon="projectIcon" /></th>
                 </tr>
             </thead> 
             </table>
+        </div>
+
+        <div class="table-wrapper">            
             <table class="table is-fullwidth todo-table is-dark">                
                 <tbody class="is-dark">
                     <tr v-for="todo in currentTodos" :key="todo.number">
-                        <td class="check"><b-checkbox type="is-danger" v-model="selectedTodos" :native-value="todo" @click="checkTodo()"></b-checkbox></td>
+                        <!-- <td class="check"><b-checkbox type="is-danger" v-model="selectedTodos" :native-value="todo" @click="checkTodo()"></b-checkbox></td> -->
                         <td class="prio">{{todo.priority}}</td>
                         <td class="task">{{todo.text}}</td>
                         <td class="contexts">
@@ -39,6 +41,10 @@
                             </td>
                         <td class="projects">
                                 <p class="p-tags" v-for="(project) in todo.projects" :key="project" @click="selectProject(project)">{{project}}</p>
+                        </td>
+                        <td>
+                            <font-awesome-icon v-if="notSelected(todo)" :icon="plusSquare" @click="checkTodo(todo)"/>
+                            <font-awesome-icon v-else :icon="minusSquare" @click="uncheckTodo(todo)"/>
                         </td>
                         </tr>
                 </tbody>
@@ -48,13 +54,21 @@
 </template>
 
 <script>
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
+import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee';
+import faThermometerHalf from '@fortawesome/fontawesome-free-solid/faThermometerHalf';
+import falocationArrow from '@fortawesome/fontawesome-free-solid/falocationArrow';
+import falistul from '@fortawesome/fontawesome-free-solid/falistul';
+import faarchive from '@fortawesome/fontawesome-free-solid/faarchive';
+import faPlusSquare from '@fortawesome/fontawesome-free-regular/faPlusSquare';
+import faMinusSquare from '@fortawesome/fontawesome-free-regular/faMinusSquare';
+
 export default {
     data() {
         return {
             searchTerm: '',
             context: '',
             project: '',
-            selectedTodos: [],
         };
     },
     name: 'todolist',
@@ -80,13 +94,32 @@ export default {
 
             return currentTodos;
         },
-    },
-    watch: {
-        selectedTodos(selectedTodos) {
-            this.$store.commit('selectTasks', selectedTodos);
+        selectedTodos() {
+            return this.$store.state.Timer.taskList;
+        },
+        icon() {
+            return faCoffee;
+        },
+        prioIcon() {
+            return faThermometerHalf;
+        },
+        locationIcon() {
+            return falocationArrow;
+        },
+        listIcon() {
+            return falistul;
+        },
+        projectIcon() {
+            return faarchive;
+        },
+        plusSquare() {
+            return faPlusSquare;
+        },
+        minusSquare() {
+            return faMinusSquare;
         },
     },
-    components: {},
+    components: { FontAwesomeIcon },
     props: ['todos'],
     methods: {
         open(link) {
@@ -98,8 +131,17 @@ export default {
         selectProject(project) {
             this.project = project;
         },
-        checkTodo() {
-            console.log('todo checked');
+        checkTodo(todo) {
+            this.$store.commit('selectTask', todo);
+        },
+        uncheckTodo(todo) {
+            this.$store.commit('removeTask', todo);
+        },
+        notSelected(todo) {
+            if (this.selectedTodos.indexOf(todo) > -1) {
+                return false;
+            }
+            return true;
         },
     },
 };
@@ -111,25 +153,43 @@ export default {
 }
 
 .table-wrapper {
-    margin: 15px;
+    margin: 0 15px;
     border-radius: 5px;
     border: 1px solid #01d5da;
     height: 500px;
     padding: 5px;
 }
 
-.check,
+.header-wrapper {
+    margin: 0 15px;
+    padding: 5px;
+    border: none;
+}
+
+.table {
+    table-layout: fixed;
+    font-size: 14px;
+}
+
+.table-header {
+    margin-bottom: 0px;
+}
+
 .prio {
     width: 10px;
 }
 
 .task {
-    width: 200px;
+    width: 300px;
 }
 
 .contexts,
 .projects {
-    width: 40px;
+    width: 100px;
+}
+
+th {
+    border: none;
 }
 
 p {
@@ -139,6 +199,7 @@ p {
 }
 
 p.p-tags {
+    font-size: 12px;
     border: 2px solid #3f51b5;
     border-radius: 5px;
     transition: border-color 0.45s ease-in-out;

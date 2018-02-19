@@ -6,11 +6,17 @@
 </template>
 
 <script>
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
+import fontawesome from '@fortawesome/fontawesome';
+import faSpinner from '@fortawesome/fontawesome-free-solid/faSpinner';
+
 import Navbar from './components/Navbar';
+
+fontawesome.library.add(faSpinner);
 
 export default {
     name: 'electron-todo-txt',
-    components: { Navbar },
+    components: { Navbar, FontAwesomeIcon },
 };
 </script>
 
