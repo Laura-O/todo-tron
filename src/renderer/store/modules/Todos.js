@@ -7,8 +7,8 @@ const mutations = {
     addTodos(state, todos) {
         state.todos = todos;
     },
-    selectTodo(state, selectTodo) {
-        state.selectedTodos = selectTodo;
+    selectTodos(state, selectedTodos) {
+        state.selectedTodos = selectedTodos;
     },
 };
 
@@ -18,8 +18,8 @@ const actions = {
     addTodos({ commit }, payload) {
         commit('addTodos', payload);
     },
-    selectTodo({ commit }, payload) {
-        commit('selectTodo', payload);
+    selectTodos({ commit }, payload) {
+        commit('selectTodos', payload);
     },
 };
 

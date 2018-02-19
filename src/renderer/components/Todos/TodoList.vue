@@ -31,7 +31,7 @@
             <table class="table is-fullwidth todo-table is-dark">                
                 <tbody class="is-dark">
                     <tr v-for="todo in currentTodos" :key="todo.number">
-                        <td class="check"><b-checkbox type="is-danger" v-model="selectedTodos" :native-value="todo"></b-checkbox></td>
+                        <td class="check"><b-checkbox type="is-danger" v-model="selectedTodos" :native-value="todo" @click="checkTodo()"></b-checkbox></td>
                         <td class="prio">{{todo.priority}}</td>
                         <td class="task">{{todo.text}}</td>
                         <td class="contexts">
@@ -81,6 +81,11 @@ export default {
             return currentTodos;
         },
     },
+    watch: {
+        selectedTodos(selectedTodos) {
+            this.$store.commit('selectTodos', selectedTodos);
+        },
+    },
     components: {},
     props: ['todos'],
     methods: {
@@ -92,6 +97,9 @@ export default {
         },
         selectProject(project) {
             this.project = project;
+        },
+        checkTodo() {
+            console.log('todo checked');
         },
     },
 };
@@ -142,14 +150,12 @@ p:hover {
 
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
 }
 
 ::-webkit-scrollbar {
     width: 10px;
-
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
 }
