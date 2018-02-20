@@ -35,6 +35,22 @@ const mutations = {
         state.currentTask.seconds = seconds;
         state.taskList[0].seconds = seconds;
     },
+    moveTaskUp(state, id) {
+        const index = state.taskList.findIndex((task) => task.taskId === id);
+        const taskElement = state.taskList[index];
+        const newTaskList = state.taskList;
+        newTaskList.splice(index, 1);
+        newTaskList.splice(index - 1, 0, taskElement);
+        state.tasklist = newTaskList;
+    },
+    moveTaskDown(state, id) {
+        const index = state.taskList.findIndex((task) => task.taskId === id);
+        const taskElement = state.taskList[index];
+        const newTaskList = state.taskList;
+        newTaskList.splice(index, 1);
+        newTaskList.splice(index + 1, 0, taskElement);
+        state.tasklist = newTaskList;
+    },
 };
 
 const getters = {
@@ -64,6 +80,12 @@ const actions = {
     },
     updateCurrentSeconds({ commit }, payload) {
         commit('updateCurrentSeconds', payload);
+    },
+    moveTaskUp({ commit }, payload) {
+        commit('moveTaskUp', payload);
+    },
+    moveTaskDown({ commit }, payload) {
+        commit('moveTaskDown', payload);
     },
 };
 

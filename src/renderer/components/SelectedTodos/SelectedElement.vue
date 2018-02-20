@@ -1,8 +1,8 @@
 <template>
     <div class="singleselected">
         <div class="arrows">
-            <font-awesome-icon :icon="upArrow" />
-            <font-awesome-icon :icon="downArrow" />
+            <font-awesome-icon :icon="upArrow" @click="moveTaskUp(task.taskId)"/>
+            <font-awesome-icon :icon="downArrow"  @click="moveTaskDown(task.taskId)"/>
         </div>
         <p>{{this.task.text}}</p>        
         <div class="field-wrapper">
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import faArrowSquareUp from '@fortawesome/fontawesome-pro-regular/faArrowSquareUp';
 import faArrowSquareDown from '@fortawesome/fontawesome-pro-regular/faArrowSquareDown';
@@ -31,7 +32,6 @@ export default {
     },
     components: { FontAwesomeIcon },
     props: ['task'],
-    methods: {},
     computed: {
         upArrow() {
             return faArrowSquareUp;
@@ -40,6 +40,7 @@ export default {
             return faArrowSquareDown;
         },
     },
+    methods: mapActions(['moveTaskUp', 'moveTaskDown']),
 };
 </script>
 
