@@ -32,8 +32,16 @@ export default {
         downArrow() {
             return faArrowSquareDown;
         },
-        seconds() {
-            return this.task.seconds;
+        // seconds() {
+        //     return this.task.seconds;
+        // },
+        seconds: {
+            get() {
+                return this.task.seconds;
+            },
+            set(newValue) {
+                this.$store.commit('updateSeconds', { newValue, id: this.task.taskId });
+            },
         },
     },
     methods: {

@@ -32,6 +32,12 @@ const mutations = {
         state.currentTask.seconds = seconds;
         state.taskList[0].seconds = seconds;
     },
+    updateSeconds(state, { newValue, id }) {
+        const index = state.taskList.findIndex((task) => task.taskId === id);
+        const newTaskList = state.taskList;
+        newTaskList[index].seconds = newValue;
+        state.taskList = newTaskList;
+    },
     moveTaskUp(state, id) {
         const index = state.taskList.findIndex((task) => task.taskId === id);
         if (index > 0) {
@@ -83,6 +89,9 @@ const actions = {
     },
     updateCurrentSeconds({ commit }, payload) {
         commit('updateCurrentSeconds', payload);
+    },
+    updateSeconds({ commit }, payload) {
+        commit('updateSeconds', payload);
     },
     moveTaskUp({ commit }, payload) {
         commit('moveTaskUp', payload);
