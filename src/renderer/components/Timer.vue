@@ -20,7 +20,7 @@ export default {
     computed: {
         currentSeconds: {
             get() {
-                return this.$store.state.Timer.currentTask.seconds;
+                return this.$store.state.Tasklist.currentTask.seconds;
             },
             set(newValue) {
                 this.$store.commit('updateCurrentSeconds', newValue);

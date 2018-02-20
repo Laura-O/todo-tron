@@ -94,7 +94,7 @@ export default {
             return currentTodos;
         },
         selectedTodos() {
-            return this.$store.state.Timer.taskList;
+            return this.$store.state.Tasklist.taskList;
         },
         icon() {
             return faCoffee;
