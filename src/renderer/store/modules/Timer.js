@@ -33,6 +33,7 @@ const mutations = {
     },
     updateCurrentSeconds(state, seconds) {
         state.currentTask.seconds = seconds;
+        state.taskList[0].seconds = seconds;
     },
 };
 
