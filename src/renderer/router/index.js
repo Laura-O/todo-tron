@@ -16,11 +16,6 @@ export default new Router({
             component: require('@/components/LandingPage').default,
         },
         {
-            path: '/timer',
-            name: 'timer',
-            component: require('@/components/Timer').default,
-        },
-        {
             path: '/selected',
             name: 'selected',
             component: require('@/components/SelectedTodos').default,

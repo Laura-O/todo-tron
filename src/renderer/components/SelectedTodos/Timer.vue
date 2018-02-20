@@ -12,10 +12,9 @@
 export default {
     name: 'timer',
     data() {
-        return {
-            seconds: 50,
-        };
+        return {};
     },
+    props: ['seconds'],
     methods: {
         startTimer() {
             this.timer = window.setInterval(this.timerTick, 1000);
