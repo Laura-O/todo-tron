@@ -1,6 +1,7 @@
 const state = {
     running: false,
     taskList: [],
+    assignedTime: [],
 };
 
 const mutations = {
@@ -13,7 +14,13 @@ const mutations = {
     },
 };
 
-const getters = {};
+const getters = {
+    allTasks: (state) => state.taskList,
+    taskData: (state) =>
+        state.taskList.map((task) => ({
+            id: task.number,
+        })),
+};
 
 const actions = {
     selectTask({ commit }, payload) {

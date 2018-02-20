@@ -6,8 +6,7 @@
       Logo
     </a>
     <router-link to="/main" class="navbar-item" active-class="is-active">Main</router-link>
-    <router-link to="/selected" class="navbar-item" active-class="is-active">Selected</router-link>
-    <router-link to="/timer" class="navbar-item" active-class="is-active">Timer</router-link>
+    <router-link to="/selected" class="navbar-item" active-class="is-active">Selected</router-link>    
     <router-link to="/settings" class="navbar-item" active-class="is-active">Settings</router-link>    
   </div>
 </nav>

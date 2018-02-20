@@ -32,8 +32,7 @@
         <div class="table-wrapper">            
             <table class="table is-fullwidth todo-table is-dark">                
                 <tbody class="is-dark">
-                    <tr v-for="todo in currentTodos" :key="todo.number">
-                        <!-- <td class="check"><b-checkbox type="is-danger" v-model="selectedTodos" :native-value="todo" @click="checkTodo()"></b-checkbox></td> -->
+                    <tr v-for="todo in currentTodos" :key="todo.number">                        
                         <td class="prio">{{todo.priority}}</td>
                         <td class="task">{{todo.text}}</td>
                         <td class="contexts">

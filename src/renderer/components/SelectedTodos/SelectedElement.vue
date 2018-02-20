@@ -1,7 +1,8 @@
 <template>
     <div class="singleselected box">
         {{this.todo.text}}
-        <b-input type="number" min="1" max="180" v-model="minutes"></b-input>
+        <b-input type="hours" min="1" max="23" v-model="hours"></b-input>
+        <b-input type="minutes" min="1" max="59" v-model="minutes"></b-input>
     </div>
 </template>
 
@@ -11,6 +12,7 @@ export default {
     data() {
         return {
             minutes: 20,
+            hours: 0,
         };
     },
     components: {},
