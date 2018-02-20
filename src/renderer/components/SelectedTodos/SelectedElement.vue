@@ -8,14 +8,11 @@
             <div class="input-field">
                 <b-input size="is-small" type="number" min="1" max="59" v-model="minutes"/>
             </div>
-        </div>
-        <timer :seconds="this.task.seconds"></timer>        
+        </div>        
     </div>
 </template>
 
 <script>
-import Timer from './Timer';
-
 export default {
     name: 'selected-element',
     data() {
@@ -24,7 +21,7 @@ export default {
             hours: 0,
         };
     },
-    components: { Timer },
+    components: {},
     props: ['task'],
     methods: {},
     computed: {},

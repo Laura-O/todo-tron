@@ -2,11 +2,11 @@ const state = {
     running: false,
     taskList: [],
     assignedTime: [],
+    currentTask: [],
 };
 
 const mutations = {
     selectTask(state, todo) {
-        // state.taskList.push(todo);
         const uniqueId =
             Math.random()
                 .toString(36)
@@ -28,6 +28,12 @@ const mutations = {
     setTime(state, { todo, seconds }) {
         state.assignedTime[todo.number] = seconds;
     },
+    setCurrentTask(state) {
+        state.currentTask = state.taskList[0];
+    },
+    updateCurrentSeconds(state, seconds) {
+        state.currentTask.seconds = seconds;
+    },
 };
 
 const getters = {
@@ -44,12 +50,19 @@ const getters = {
 const actions = {
     selectTask({ commit }, payload) {
         commit('selectTask', payload);
+        commit('setCurrentTask', payload);
     },
     removeTask({ commit }, payload) {
         commit('removeTask', payload);
     },
     setTime({ commit }, payload) {
         commit('setTime', payload);
+    },
+    setCurrentTask({ commit }, payload) {
+        commit('setCurrentTask', payload);
+    },
+    updateCurrentSeconds({ commit }, payload) {
+        commit('updateCurrentSeconds', payload);
     },
 };
 

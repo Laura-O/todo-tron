@@ -3,7 +3,7 @@
         <button href="#" v-on:click="startTimer">Start</button>
         <button href="#" v-on:click="stopTimer">Stop</button>
         <div class="timer">
-            {{seconds}}
+            {{currentSeconds}}
         </div>
     </div>
 </template>
@@ -14,7 +14,17 @@ export default {
     data() {
         return {};
     },
-    props: ['seconds'],
+    props: [],
+    computed: {
+        currentSeconds: {
+            get() {
+                return this.$store.state.Timer.currentTask.seconds;
+            },
+            set(newValue) {
+                this.$store.commit('updateCurrentSeconds', newValue);
+            },
+        },
+    },
     methods: {
         startTimer() {
             this.timer = window.setInterval(this.timerTick, 1000);
@@ -23,8 +33,8 @@ export default {
             window.clearInterval(this.timer);
         },
         timerTick() {
-            if (this.seconds !== 0) {
-                this.seconds -= 1;
+            if (this.currentSeconds !== 0) {
+                this.currentSeconds -= 1;
             } else {
                 this.stopTimer();
             }

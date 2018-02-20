@@ -2,6 +2,7 @@
   <div id="app">
     <navbar></navbar>
     <router-view></router-view>
+    <footer><timer></timer></footer>
   </div>
 </template>
 
@@ -11,12 +12,13 @@ import fontawesome from '@fortawesome/fontawesome';
 import faSpinner from '@fortawesome/fontawesome-free-solid/faSpinner';
 
 import Navbar from './components/Navbar';
+import Timer from './components/Timer';
 
 fontawesome.library.add(faSpinner);
 
 export default {
     name: 'electron-todo-txt',
-    components: { Navbar, FontAwesomeIcon },
+    components: { Navbar, Timer, FontAwesomeIcon },
 };
 </script>
 

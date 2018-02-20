@@ -132,6 +132,7 @@ export default {
         },
         checkTodo(todo) {
             this.$store.commit('selectTask', todo);
+            this.$store.commit('setCurrentTask', todo);
         },
         uncheckTodo(todo) {
             this.$store.commit('removeTask', todo);
