@@ -5,12 +5,9 @@
             <font-awesome-icon :icon="downArrow"  @click="moveDown(task.taskId)"/>
         </div>
         <p>{{this.task.text}}</p>        
-        <div class="field-wrapper">
+        <div class="field-wrapper">        
             <div class="input-field">
-                <b-input size="is-small" type="number" min="0" max="23" v-model="hours" />
-            </div>
-            <div class="input-field">
-                <b-input size="is-small" type="number" min="1" max="59" v-model="minutes"/>
+                <b-input size="is-small" type="number" min="1" max="59" v-model="seconds"/>
             </div>
         </div>        
     </div>
@@ -24,10 +21,7 @@ import faArrowSquareDown from '@fortawesome/fontawesome-pro-regular/faArrowSquar
 export default {
     name: 'selected-element',
     data() {
-        return {
-            minutes: 20,
-            hours: 0,
-        };
+        return {};
     },
     components: { FontAwesomeIcon },
     props: ['task'],
@@ -37,6 +31,9 @@ export default {
         },
         downArrow() {
             return faArrowSquareDown;
+        },
+        seconds() {
+            return this.task.seconds;
         },
     },
     methods: {

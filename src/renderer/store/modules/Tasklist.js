@@ -34,19 +34,25 @@ const mutations = {
     },
     moveTaskUp(state, id) {
         const index = state.taskList.findIndex((task) => task.taskId === id);
-        const taskElement = state.taskList[index];
-        const newTaskList = state.taskList;
-        newTaskList.splice(index, 1);
-        newTaskList.splice(index - 1, 0, taskElement);
-        state.taskList = newTaskList;
+        if (index > 0) {
+            const taskElement = state.taskList[index];
+            const newTaskList = state.taskList;
+            newTaskList.splice(index, 1);
+            newTaskList.splice(index - 1, 0, taskElement);
+            state.taskList = newTaskList;
+            state.currentTask = state.taskList[0];
+        }
     },
     moveTaskDown(state, id) {
         const index = state.taskList.findIndex((task) => task.taskId === id);
-        const taskElement = state.taskList[index];
-        const newTaskList = state.taskList;
-        newTaskList.splice(index, 1);
-        newTaskList.splice(index + 1, 0, taskElement);
-        state.taskList = newTaskList;
+        if (index < state.taskList.length) {
+            const taskElement = state.taskList[index];
+            const newTaskList = state.taskList;
+            newTaskList.splice(index, 1);
+            newTaskList.splice(index + 1, 0, taskElement);
+            state.taskList = newTaskList;
+            state.currentTask = state.taskList[0];
+        }
     },
 };
 
