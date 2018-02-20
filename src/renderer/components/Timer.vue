@@ -9,6 +9,8 @@
 </template>
 
 <script>
+// import { ipcRenderer } from 'electron';
+
 export default {
     name: 'timer',
     data() {
@@ -35,9 +37,13 @@ export default {
         timerTick() {
             if (this.currentSeconds !== 0) {
                 this.currentSeconds -= 1;
+                this.updateTray(this.currentSeconds);
             } else {
                 this.stopTimer();
             }
+        },
+        updateTray(seconds) {
+            this.$electron.ipcRenderer.send('update-timer', seconds.toString());
         },
     },
 };

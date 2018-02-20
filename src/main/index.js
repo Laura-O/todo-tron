@@ -1,5 +1,4 @@
-import { app, BrowserWindow, Menu, Tray } from 'electron'; // eslint-disable-line
-
+import { app, ipcMain, BrowserWindow, Menu, Tray } from 'electron'; // eslint-disable-line
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
@@ -13,6 +12,16 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 let mainWindow;
+let tray;
+
+const toggleWindow = () => {
+    if (mainWindow.isVisible()) {
+        mainWindow.hide();
+    } else {
+        mainWindow.show();
+    }
+};
+
 const winURL =
     process.env.NODE_ENV === 'development'
         ? 'http://localhost:9080'
@@ -23,14 +32,9 @@ function createWindow() {
      * Initial window options
      */
     mainWindow = new BrowserWindow({
-        // height: 563,
-        // useContentSize: true,
-        // width: 1000,
-        width: 600,
-        height: 600,
-        minWidth: 400,
-        minHeight: 300,
-        resizable: true,
+        height: 563,
+        useContentSize: true,
+        width: 1000,
     });
 
     mainWindow.loadURL(winURL);
@@ -40,7 +44,22 @@ function createWindow() {
     });
 }
 
-app.on('ready', createWindow);
+function createTray() {
+    tray = new Tray(`${__static}/icons/icon.png`, mainWindow);
+
+    tray.on('right-click', () => {
+        mainWindow.hide();
+    });
+
+    tray.on('click', () => {
+        toggleWindow();
+    });
+}
+
+app.on('ready', () => {
+    createWindow();
+    createTray();
+});
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
@@ -52,6 +71,10 @@ app.on('activate', () => {
     if (mainWindow === null) {
         createWindow();
     }
+});
+
+ipcMain.on('update-timer', (event, timeLeft) => {
+    tray.setTitle(timeLeft);
 });
 
 /**
