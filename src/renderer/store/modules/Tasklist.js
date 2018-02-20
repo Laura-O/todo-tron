@@ -38,7 +38,7 @@ const mutations = {
         const newTaskList = state.taskList;
         newTaskList.splice(index, 1);
         newTaskList.splice(index - 1, 0, taskElement);
-        state.tasklist = newTaskList;
+        state.taskList = newTaskList;
     },
     moveTaskDown(state, id) {
         const index = state.taskList.findIndex((task) => task.taskId === id);
@@ -46,7 +46,7 @@ const mutations = {
         const newTaskList = state.taskList;
         newTaskList.splice(index, 1);
         newTaskList.splice(index + 1, 0, taskElement);
-        state.tasklist = newTaskList;
+        state.taskList = newTaskList;
     },
 };
 

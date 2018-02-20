@@ -1,8 +1,8 @@
 <template>
     <div class="singleselected">
         <div class="arrows">
-            <font-awesome-icon :icon="upArrow" @click="moveTaskUp(task.taskId)"/>
-            <font-awesome-icon :icon="downArrow"  @click="moveTaskDown(task.taskId)"/>
+            <font-awesome-icon :icon="upArrow" @click="moveUp(task.taskId)"/>
+            <font-awesome-icon :icon="downArrow"  @click="moveDown(task.taskId)"/>
         </div>
         <p>{{this.task.text}}</p>        
         <div class="field-wrapper">
@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import faArrowSquareUp from '@fortawesome/fontawesome-pro-regular/faArrowSquareUp';
 import faArrowSquareDown from '@fortawesome/fontawesome-pro-regular/faArrowSquareDown';
@@ -40,7 +39,31 @@ export default {
             return faArrowSquareDown;
         },
     },
-    methods: mapActions(['moveTaskUp', 'moveTaskDown']),
+    methods: {
+        moveUp(taskId) {
+            if (!this.$store.state.Timer.running) {
+                this.$store.commit('moveTaskUp', taskId);
+            } else {
+                this.warning();
+            }
+        },
+        moveDown(taskId) {
+            if (!this.$store.state.Timer.running) {
+                this.$store.commit('moveTaskDown', taskId);
+            } else {
+                this.warning();
+            }
+        },
+        warning() {
+            this.$snackbar.open({
+                message: 'Please stop the timer before moving tasks',
+                type: 'is-danger',
+                position: 'is-bottom-right',
+                actionText: null,
+                queue: false,
+            });
+        },
+    },
 };
 </script>
 
