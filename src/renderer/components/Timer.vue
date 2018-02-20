@@ -30,9 +30,11 @@ export default {
     methods: {
         startTimer() {
             this.timer = window.setInterval(this.timerTick, 1000);
+            this.$store.commit('startTimer');
         },
         stopTimer() {
             window.clearInterval(this.timer);
+            this.$store.commit('stopTimer');
         },
         timerTick() {
             if (this.currentSeconds !== 0) {
