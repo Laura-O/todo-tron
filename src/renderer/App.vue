@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <navbar></navbar>
+    <transition name="slide">
     <router-view></router-view>
-    <footer><timer></timer></footer>
+    </transition>
+    <footer class="is-dark"><timer></timer></footer>
   </div>
 </template>
 
@@ -27,12 +29,12 @@ export default {
 @import '~bulma/sass/utilities/_all';
 
 // Set your colors
-$primary: #ff1744;
+$primary: #f84aa7;
 $primary-invert: findColorInvert($primary);
-$twitter: #4099ff;
+$twitter: #00a6fb;
 $twitter-invert: findColorInvert($twitter);
 
-$dark: #212121;
+$dark: #2d2f31;
 $dark-invert: findColorInvert($dark);
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
@@ -65,6 +67,10 @@ $box-radius: 5px;
 }
 
 .main-wrapper {
-    height: 100%;
+    background-color: #2d2f31;
+}
+
+.footer {
+    background-color: #2d2f31;
 }
 </style>

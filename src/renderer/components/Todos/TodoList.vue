@@ -20,10 +20,10 @@
             <table class="table table-header">    
                 <thead>
                 <tr>                    
-                    <th class="prio"><font-awesome-icon :icon="prioIcon" /></th>
-                    <th class="task"><font-awesome-icon :icon="listIcon" /></th>
-                    <th class="contexts"><font-awesome-icon :icon="locationIcon" /></th>
-                    <th class="projects"><font-awesome-icon :icon="projectIcon" /></th>
+                    <th class="prio"><font-awesome-icon :icon="prioIcon" style="color: #01d5da;" /></th>
+                    <th class="task"><font-awesome-icon :icon="listIcon" style="color: #01d5da;" /></th>
+                    <th class="contexts"><font-awesome-icon :icon="locationIcon" style="color: #01d5da;" /></th>
+                    <th class="projects"><font-awesome-icon :icon="projectIcon" style="color: #01d5da;" /></th>
                 </tr>
             </thead> 
             </table>
@@ -155,7 +155,7 @@ export default {
 .table-wrapper {
     margin: 0 15px;
     border-radius: 5px;
-    border: 1px solid #01d5da;
+    border: 2px solid #01d5da;
     height: 500px;
     padding: 5px;
 }
@@ -169,6 +169,8 @@ export default {
 .table {
     table-layout: fixed;
     font-size: 14px;
+    background-color: #2d2f31;
+    color: white;
 }
 
 .table-header {
@@ -200,13 +202,13 @@ p {
 
 p.p-tags {
     font-size: 12px;
-    border: 2px solid #3f51b5;
+    border: 2px solid #00a6fb;
     border-radius: 5px;
     transition: border-color 0.45s ease-in-out;
 }
 
 p:hover {
-    border-color: #ff1744;
+    border-color: #f84aa7;
 }
 
 ::-webkit-scrollbar-track {

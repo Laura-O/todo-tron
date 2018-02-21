@@ -45,7 +45,7 @@ function createWindow() {
 }
 
 function createTray() {
-    tray = new Tray(`${__static}/icons/icon.png`, mainWindow);
+    tray = new Tray(`${__static}/icons/png/iconTemplate.png`, mainWindow);
 
     tray.on('right-click', () => {
         mainWindow.hide();

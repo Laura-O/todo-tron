@@ -52,5 +52,7 @@ export default {
 </script>
 
 <style>
-
+.timer-wrapper {
+    background-color: #2d2f31;
+}
 </style>
