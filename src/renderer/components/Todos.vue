@@ -2,7 +2,7 @@
   <div class="main-wrapper">    
     <div>
        <todo-list :todos="todos" :columns="columns"></todo-list>
-    </div>
+    </div>    
   </div>
 </template>
 

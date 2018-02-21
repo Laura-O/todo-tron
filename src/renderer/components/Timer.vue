@@ -77,6 +77,7 @@ export default {
             } else {
                 this.stopTimer();
                 this.finishTask();
+                this.sendTaskFinishedNotification();
             }
         },
         updateTray(seconds) {
@@ -84,6 +85,18 @@ export default {
         },
         finishTask() {
             this.$store.commit('archiveTask');
+        },
+        sendTaskFinishedNotification() {
+            const notification = {
+                title: 'Task is done',
+                body: 'Your task is done!',
+            };
+
+            const myNotification = new window.Notification(notification.title, notification);
+
+            myNotification.onclick = () => {
+                console.log('Notification clicked');
+            };
         },
     },
 };
