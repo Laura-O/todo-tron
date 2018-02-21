@@ -45,6 +45,9 @@ const mutations = {
         const newTaskList = state.taskList;
         newTaskList[index].totalSeconds = newValue;
         state.taskList = newTaskList;
+        if (index === 0) {
+            state.currentTask.totalSeconds = newValue;
+        }
     },
     moveTaskUp(state, id) {
         const index = state.taskList.findIndex((task) => task.taskId === id);

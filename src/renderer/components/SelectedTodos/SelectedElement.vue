@@ -5,7 +5,7 @@
             <font-awesome-icon :icon="downArrow"  @click="moveDown(task.taskId)"/>
         </div>
         <p>{{this.task.text}}</p>        
-        <div class="field-wrapper">        
+        <div class="field-wrapper">    
             <div class="input-field">
                 <b-input size="is-small" type="number" min="1" :max="59" v-model="totalSeconds"/>
             </div>
@@ -34,11 +34,13 @@ export default {
         },
         totalSeconds: {
             get() {
-                return this.$store.state.Tasklist.currentTask.totalSeconds;
+                const item = this.$store.state.Tasklist.taskList.filter(
+                    (todo) => todo.taskId === this.task.taskId,
+                );
+                return item[0].totalSeconds;
             },
             set(newValue) {
                 this.$store.commit('updateTotalSeconds', { newValue, id: this.task.taskId });
-                this.$store.commit('updateSeconds', { newValue, id: this.task.taskId });
             },
         },
         seconds: {

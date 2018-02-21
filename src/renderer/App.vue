@@ -63,10 +63,6 @@ $box-radius: 5px;
 @import '~bulma';
 @import '~buefy/src/scss/buefy';
 
-footer {
-    height: 500px;
-}
-
 .table.is-scrollable tbody {
     overflow-y: scroll;
 }
