@@ -83,6 +83,14 @@ ipcMain.on('update-timer', (event, timeLeft) => {
     tray.setTitle(timeLeft);
 });
 
+ipcMain.on('open-window', (event) => {
+    mainWindow.show();
+});
+
+ipcMain.on('hide-window', (event) => {
+    mainWindow.hide();
+});
+
 /**
  * Auto Updater
  *
