@@ -1,5 +1,6 @@
 const state = {
     taskList: [],
+    archiveList: [],
     assignedTime: [],
     currentTask: [],
 };
@@ -67,6 +68,11 @@ const mutations = {
             state.currentTask = state.taskList[0];
         }
     },
+    archiveTask(state) {
+        state.archiveList.push(state.currentTask);
+        state.taskList.shift();
+        state.currentTask = state.allTasks[0];
+    },
 };
 
 const getters = {
@@ -108,6 +114,9 @@ const actions = {
     },
     moveTaskDown({ commit }, payload) {
         commit('moveTaskDown', payload);
+    },
+    archiveTask({ commit }, payload) {
+        commit('archiveTask', payload);
     },
 };
 

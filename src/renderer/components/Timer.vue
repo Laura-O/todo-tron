@@ -66,10 +66,14 @@ export default {
                 this.updateTray(this.currentSeconds);
             } else {
                 this.stopTimer();
+                this.finishTask();
             }
         },
         updateTray(seconds) {
             this.$electron.ipcRenderer.send('update-timer', seconds.toString());
+        },
+        finishTask() {
+            this.$store.commit('archiveTask');
         },
     },
 };
