@@ -1,5 +1,5 @@
 <template>
-    <div class="singleselected">
+    <div class="archivedselected">
        <div class="arrows">
             <font-awesome-icon :icon="upArrow" />
             <font-awesome-icon :icon="downArrow"/>
@@ -37,11 +37,12 @@ export default {
 </script>
 
 <style scoped>
-.singleselected {
+.archivedselected {
     font-size: 14px;
     margin-bottom: 10px;
     display: grid;
     grid-template-columns: 50px 1fr 100px;
+    color: grey;
 }
 
 .field-wrapper {

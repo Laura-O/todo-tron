@@ -27,6 +27,8 @@ export default {
 
 <style>
 .selected-wrapper {
-    margin: 15px;
+    padding: 15px;
+    background-color: #2d2f31;
+    color: white;
 }
 </style>

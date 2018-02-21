@@ -210,7 +210,7 @@ p {
 
 p.p-tags {
     font-size: 12px;
-    border: 2px solid #00a6fb;
+    border: 2px solid #01d5da;
     border-radius: 5px;
     transition: border-color 0.45s ease-in-out;
 }
