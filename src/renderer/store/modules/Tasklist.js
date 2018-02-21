@@ -15,6 +15,7 @@ const mutations = {
             todoId: todo.number,
             text: todo.text,
             seconds: 20,
+            totalSeconds: 20,
             done: false,
         };
         state.taskList.push(newTask);
@@ -36,6 +37,12 @@ const mutations = {
         const index = state.taskList.findIndex((task) => task.taskId === id);
         const newTaskList = state.taskList;
         newTaskList[index].seconds = newValue;
+        state.taskList = newTaskList;
+    },
+    updateTotalSeconds(state, { newValue, id }) {
+        const index = state.taskList.findIndex((task) => task.taskId === id);
+        const newTaskList = state.taskList;
+        newTaskList[index].totalSeconds = newValue;
         state.taskList = newTaskList;
     },
     moveTaskUp(state, id) {
@@ -89,6 +96,9 @@ const actions = {
     },
     updateCurrentSeconds({ commit }, payload) {
         commit('updateCurrentSeconds', payload);
+    },
+    updateTotalSeconds({ commit }, payload) {
+        commit('updateTotalSeconds', payload);
     },
     updateSeconds({ commit }, payload) {
         commit('updateSeconds', payload);

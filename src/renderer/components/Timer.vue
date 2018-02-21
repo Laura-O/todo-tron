@@ -14,7 +14,7 @@
             </div>      
         </div>
         <div>
-            <progress class="progress is-primary" :value="currentSeconds" :max="totalTime"></progress>
+            <progress class="progress is-primary" :value="currentSeconds" :max="totalSeconds"></progress>
         </div>        
     </div>
 </template>
@@ -28,9 +28,7 @@ import faPause from '@fortawesome/fontawesome-pro-regular/faPause';
 export default {
     name: 'timer',
     data() {
-        return {
-            totalTime: this.$store.state.Tasklist.currentTask.seconds,
-        };
+        return {};
     },
     components: { FontAwesomeIcon },
     props: [],
@@ -42,6 +40,9 @@ export default {
             set(newValue) {
                 this.$store.commit('updateCurrentSeconds', newValue);
             },
+        },
+        totalSeconds() {
+            return this.$store.state.Tasklist.currentTask.totalSeconds;
         },
         playButton() {
             return faPlay;

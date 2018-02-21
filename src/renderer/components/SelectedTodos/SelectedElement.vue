@@ -7,7 +7,7 @@
         <p>{{this.task.text}}</p>        
         <div class="field-wrapper">        
             <div class="input-field">
-                <b-input size="is-small" type="number" min="1" max="59" v-model="seconds"/>
+                <b-input size="is-small" type="number" min="1" :max="59" v-model="totalSeconds"/>
             </div>
         </div>        
     </div>
@@ -32,9 +32,15 @@ export default {
         downArrow() {
             return faArrowSquareDown;
         },
-        // seconds() {
-        //     return this.task.seconds;
-        // },
+        totalSeconds: {
+            get() {
+                return this.$store.state.Tasklist.currentTask.totalSeconds;
+            },
+            set(newValue) {
+                this.$store.commit('updateTotalSeconds', { newValue, id: this.task.taskId });
+                this.$store.commit('updateSeconds', { newValue, id: this.task.taskId });
+            },
+        },
         seconds: {
             get() {
                 return this.task.seconds;
