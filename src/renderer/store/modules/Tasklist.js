@@ -71,7 +71,9 @@ const mutations = {
     archiveTask(state) {
         state.archiveList.push(state.currentTask);
         state.taskList.shift();
-        state.currentTask = state.allTasks[0];
+        if (state.taskList.length !== 0) {
+            state.currentTask = state.taskList[0];
+        }
     },
     resetTimer(state) {
         state.currentTask.seconds = state.currentTask.totalSeconds;
@@ -81,6 +83,7 @@ const mutations = {
 
 const getters = {
     allTasks: (state) => state.taskList,
+    doneTasks: (state) => state.archiveList,
     taskData(state) {
         return state.taskList.map((task) => ({
             id: task.number,
