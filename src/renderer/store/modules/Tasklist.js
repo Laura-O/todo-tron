@@ -73,6 +73,10 @@ const mutations = {
         state.taskList.shift();
         state.currentTask = state.allTasks[0];
     },
+    resetTimer(state) {
+        state.currentTask.seconds = state.currentTask.totalSeconds;
+        state.taskList[0].seconds = state.currentTask.totalSeconds;
+    },
 };
 
 const getters = {
@@ -117,6 +121,9 @@ const actions = {
     },
     archiveTask({ commit }, payload) {
         commit('archiveTask', payload);
+    },
+    resetTimer({ commit }) {
+        commit('resetTimer');
     },
 };
 

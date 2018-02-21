@@ -8,6 +8,9 @@
                 <a class="button is-primary is-small" v-on:click="stopTimer">
                     <font-awesome-icon :icon="pauseButton" />            
                 </a>
+                <a class="button is-primary is-small" v-on:click="resetTimer">
+                    <font-awesome-icon :icon="redoButton" />            
+                </a>
             </div>
             <div class="time-wrapper">
                 {{currentSeconds}}                
@@ -24,6 +27,7 @@
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import faPlay from '@fortawesome/fontawesome-pro-regular/faPlay';
 import faPause from '@fortawesome/fontawesome-pro-regular/faPause';
+import faRedo from '@fortawesome/fontawesome-pro-regular/faRedo';
 
 export default {
     name: 'timer',
@@ -50,6 +54,9 @@ export default {
         pauseButton() {
             return faPause;
         },
+        redoButton() {
+            return faRedo;
+        },
     },
     methods: {
         startTimer() {
@@ -59,6 +66,9 @@ export default {
         stopTimer() {
             window.clearInterval(this.timer);
             this.$store.commit('stopTimer');
+        },
+        resetTimer() {
+            this.$store.commit('resetTimer');
         },
         timerTick() {
             if (this.currentSeconds !== 0) {
