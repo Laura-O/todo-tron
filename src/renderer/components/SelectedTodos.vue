@@ -1,6 +1,6 @@
 <template>
     <div class="selected-wrapper">
-        <div v-for="task in seletcedTasks" :key="task.taskId">
+        <div v-for="task in selectedTasks" :key="task.taskId">
             <selected-element :task="task"></selected-element>
         </div>        
   </div>
@@ -15,7 +15,7 @@ export default {
     components: { SelectedElement },
     methods: {},
     computed: mapGetters({
-        seletcedTasks: 'allTasks',
+        selectedTasks: 'allTasks',
     }),
 };
 </script>
