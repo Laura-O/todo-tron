@@ -1,29 +1,31 @@
 <template>
   <div class="list">
-      <input placeholder="Filter by Name" icon="search" v-model="searchTerm">
-      <div class="field">
-            <b-tag v-if="context"
-                type="is-primary"
-                closable
-                @close="context = ''">
-                {{context}}
-            </b-tag>
-            <b-tag v-if="project"
-                type="is-primary"
-                closable
-                @close="project = ''">
-                {{project}}
-            </b-tag>
+      <div class="top-wrapper">
+        <b-input size="is-small" placeholder="Filter by Name" icon="search" v-model="searchTerm"></b-input>
+        <div class="field">
+                <b-tag v-if="context"
+                    type="is-primary"
+                    closable
+                    @close="context = ''">
+                    {{context}}
+                </b-tag>
+                <b-tag v-if="project"
+                    type="is-primary"
+                    closable
+                    @close="project = ''">
+                    {{project}}
+                </b-tag>
+            </div>
         </div>
 
         <div class="header-wrapper">     
             <table class="table table-header">    
                 <thead>
                 <tr>                    
-                    <th class="prio"><font-awesome-icon :icon="prioIcon" class="" style="color: #01d5da;" /></th>
-                    <th class="task"><font-awesome-icon :icon="listIcon" style="color: #01d5da;" /></th>
-                    <th class="contexts"><font-awesome-icon :icon="locationIcon" style="color: #01d5da;" /></th>
-                    <th class="projects"><font-awesome-icon :icon="projectIcon" style="color: #01d5da;" /></th>
+                    <th class="prio"><font-awesome-icon :icon="prioIcon" class="green-glow" /></th>
+                    <th class="task"><font-awesome-icon :icon="listIcon" class="green-glow" /></th>
+                    <th class="contexts"><font-awesome-icon :icon="locationIcon" class="green-glow" /></th>
+                    <th class="projects"><font-awesome-icon :icon="projectIcon" class="green-glow" /></th>
                 </tr>
             </thead> 
             </table>
@@ -43,9 +45,9 @@
                         </td>
                         <td>
                             <font-awesome-icon :icon="plusSquare" class="green-glow" @click="checkTodo(todo)"/>
-                            <font-awesome-icon :icon="minusSquare" @click="uncheckTodo(todo)"/>
+                            <font-awesome-icon :icon="minusSquare" class="green-glow" @click="uncheckTodo(todo)"/>
                         </td>
-                        </tr>
+                    </tr>                    
                 </tbody>
             </table>
         </div>
@@ -143,7 +145,13 @@ export default {
 };
 </script>
 
-<style <style scoped>
+<style scoped>
+.top-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 40px 0 20px;
+}
+
 .todo-table {
     font-size: 14px;
 }
@@ -188,6 +196,10 @@ export default {
 
 th {
     border: none;
+}
+
+.todo-table tr {
+    border-bottom: 1px solid #f84aa7;
 }
 
 p {
