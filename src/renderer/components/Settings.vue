@@ -2,14 +2,21 @@
   <div class="settings-wrapper">
       <div class="single-setting-wrapper">
         <div>Path to todo-txt file: {{path}}</div>
-        <button class="button is-primary is-small" @click="setPath">Choose file</button>        
+        <button class="button is-primary is-small" @click="setPath">Change path</button>        
       </div>
       <div class="single-setting-wrapper">
-        <div>Task length</div>
-        <div class="control-wrapper">
-            <input class="input is-small" type="number" placeholder="Disabled input" disabled>
-            <button @click="setPath">Button</button>
-        </div>
+        <div>Default slot length per task: {{defaultSeconds}}</div>
+        <b-field grouped v-if="!showSecondsForm">    
+            <p class="control">                
+                <button class="button is-primary is-small" @click="toggleSeconds">Change time</button>
+            </p>
+        </b-field>
+         <b-field grouped v-else>
+            <b-input class="is-small" type="number" v-model="newSeconds"></b-input>
+            <p class="control">                
+                <button class="button is-primary is-small" @click="saveSeconds">Save</button>
+            </p>
+        </b-field>
       </div>
   <div>
 
@@ -20,18 +27,39 @@
 <script>
 export default {
     name: 'settings',
+    data() {
+        return {
+            showSecondsForm: false,
+            newSeconds: this.$store.state.Settings.defaultSeconds,
+        };
+    },
     components: {},
     computed: {
         path: {
             set(value) {
-                this.$store.commit('addPath', value);
+                this.$store.commit('changePath', value);
             },
             get() {
-                return this.getPath();
+                return this.$store.state.Settings.path;
+            },
+        },
+        defaultSeconds: {
+            set(value) {
+                this.$store.commit('changeDefaultSeconds', value);
+            },
+            get() {
+                return this.$store.state.Settings.defaultSeconds;
             },
         },
     },
     methods: {
+        saveSeconds() {
+            this.$store.commit('changeDefaultSeconds', this.newSeconds);
+            this.toggleSeconds();
+        },
+        toggleSeconds() {
+            this.showSecondsForm = !this.showSecondsForm;
+        },
         getPath() {
             const settings = require('electron').remote.require('electron-settings');
             return settings.get('path');

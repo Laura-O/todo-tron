@@ -1,7 +1,5 @@
 <template>
-  
     <todos></todos>
-  
 </template>
 
 <script>

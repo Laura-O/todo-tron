@@ -15,10 +15,17 @@ import Navbar from './components/Navbar';
 import Timer from './components/Timer';
 
 fontawesome.library.add(faSpinner);
+const storage = require('electron').remote.require('electron-settings');
 
 export default {
     name: 'electron-todo-txt',
     components: { Navbar, Timer, FontAwesomeIcon },
+    created() {
+        if (storage.has('path')) {
+            const path = storage.get('path');
+            this.$store.commit('changePath', path);
+        }
+    },
 };
 </script>
 

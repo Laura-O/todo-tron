@@ -160,7 +160,7 @@ export default {
     margin: 0 15px;
     border-radius: 5px;
     border: 2px solid #01d5da;
-    height: 100%;
+    height: 500px;
     padding: 5px;
 }
 
@@ -204,7 +204,7 @@ th {
 
 p {
     display: inline-block;
-    margin: 5px;
+    margin: 2px;
     padding: 2px 3px;
 }
 

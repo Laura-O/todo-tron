@@ -1,3 +1,4 @@
+const settings = require('electron-settings');
 const state = {
     taskList: [],
     archiveList: [],
@@ -11,12 +12,13 @@ const mutations = {
             Math.random()
                 .toString(36)
                 .substring(2) + new Date().getTime().toString(36);
+        const defaultSeconds = settings.get('defaultSeconds');
         const newTask = {
             taskId: uniqueId,
             todoId: todo.number,
             text: todo.text,
-            seconds: 20,
-            totalSeconds: 20,
+            seconds: defaultSeconds,
+            totalSeconds: defaultSeconds,
             done: false,
         };
         state.taskList.push(newTask);
