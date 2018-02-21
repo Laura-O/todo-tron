@@ -20,7 +20,7 @@
             <table class="table table-header">    
                 <thead>
                 <tr>                    
-                    <th class="prio"><font-awesome-icon :icon="prioIcon" style="color: #01d5da;" /></th>
+                    <th class="prio"><font-awesome-icon :icon="prioIcon" class="" style="color: #01d5da;" /></th>
                     <th class="task"><font-awesome-icon :icon="listIcon" style="color: #01d5da;" /></th>
                     <th class="contexts"><font-awesome-icon :icon="locationIcon" style="color: #01d5da;" /></th>
                     <th class="projects"><font-awesome-icon :icon="projectIcon" style="color: #01d5da;" /></th>
@@ -42,8 +42,8 @@
                                 <p class="p-tags" v-for="(project) in todo.projects" :key="project" @click="selectProject(project)">{{project}}</p>
                         </td>
                         <td>
-                            <font-awesome-icon v-if="notSelected(todo)" :icon="plusSquare" @click="checkTodo(todo)"/>
-                            <font-awesome-icon v-else :icon="minusSquare" @click="uncheckTodo(todo)"/>
+                            <font-awesome-icon :icon="plusSquare" class="green-glow" @click="checkTodo(todo)"/>
+                            <font-awesome-icon :icon="minusSquare" @click="uncheckTodo(todo)"/>
                         </td>
                         </tr>
                 </tbody>
@@ -54,7 +54,6 @@
 
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee';
 import faThermometerHalf from '@fortawesome/fontawesome-free-solid/faThermometerHalf';
 import falocationArrow from '@fortawesome/fontawesome-free-solid/falocationArrow';
 import falistul from '@fortawesome/fontawesome-free-solid/falistul';
@@ -95,9 +94,6 @@ export default {
         },
         selectedTodos() {
             return this.$store.state.Tasklist.taskList;
-        },
-        icon() {
-            return faCoffee;
         },
         prioIcon() {
             return faThermometerHalf;

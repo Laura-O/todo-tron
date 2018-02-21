@@ -29,7 +29,8 @@ export default {
 @import '~bulma/sass/utilities/_all';
 
 // Set your colors
-$primary: #f84aa7;
+//$primary: #f84aa7;
+$primary: #01d5da;
 $primary-invert: findColorInvert($primary);
 $twitter: #00a6fb;
 $twitter-invert: findColorInvert($twitter);
@@ -62,6 +63,10 @@ $box-radius: 5px;
 @import '~bulma';
 @import '~buefy/src/scss/buefy';
 
+footer {
+    height: 500px;
+}
+
 .table.is-scrollable tbody {
     overflow-y: scroll;
 }
@@ -72,5 +77,9 @@ $box-radius: 5px;
 
 .footer {
     background-color: #2d2f31;
+}
+
+.green-glow {
+    color: #01d5da;
 }
 </style>

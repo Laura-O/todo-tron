@@ -1,21 +1,38 @@
 <template>
-    <div class="timer-wrapper">        
-        <button href="#" v-on:click="startTimer">Start</button>
-        <button href="#" v-on:click="stopTimer">Stop</button>
-        <div class="timer">
-            {{currentSeconds}}
+    <div class="timer-wrapper">
+        <div class="button-wrapper">
+            <div>
+                <a class="button is-primary is-small" v-on:click="startTimer">
+                    <font-awesome-icon :icon="playButton" />            
+                </a>
+                <a class="button is-primary is-small" v-on:click="stopTimer">
+                    <font-awesome-icon :icon="pauseButton" />            
+                </a>
+            </div>
+            <div class="time-wrapper">
+                {{currentSeconds}}                
+            </div>      
         </div>
+        <div>
+            <progress class="progress is-primary" :value="currentSeconds" :max="totalTime"></progress>
+        </div>        
     </div>
 </template>
 
 <script>
 // import { ipcRenderer } from 'electron';
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
+import faPlay from '@fortawesome/fontawesome-pro-regular/faPlay';
+import faPause from '@fortawesome/fontawesome-pro-regular/faPause';
 
 export default {
     name: 'timer',
     data() {
-        return {};
+        return {
+            totalTime: this.$store.state.Tasklist.currentTask.seconds,
+        };
     },
+    components: { FontAwesomeIcon },
     props: [],
     computed: {
         currentSeconds: {
@@ -25,6 +42,12 @@ export default {
             set(newValue) {
                 this.$store.commit('updateCurrentSeconds', newValue);
             },
+        },
+        playButton() {
+            return faPlay;
+        },
+        pauseButton() {
+            return faPause;
         },
     },
     methods: {
@@ -54,5 +77,18 @@ export default {
 <style>
 .timer-wrapper {
     background-color: #2d2f31;
+    height: 80px;
+    padding: 0px 10px;
+    justify-content: center;
+}
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+.time-wrapper {
+    font-size: 20px;
+    color: white;
 }
 </style>
