@@ -38,6 +38,7 @@ function createWindow() {
         autoHideMenuBar: true,
         // frame: false,
         title: 'TodoTron 3000',
+        backgroundColor: '#2d2f31',
         webPreferences: {
             backgroundThrottling: false,
         },
@@ -83,11 +84,11 @@ ipcMain.on('update-timer', (event, timeLeft) => {
     tray.setTitle(timeLeft);
 });
 
-ipcMain.on('open-window', (event) => {
+ipcMain.on('open-window', () => {
     mainWindow.show();
 });
 
-ipcMain.on('hide-window', (event) => {
+ipcMain.on('hide-window', () => {
     mainWindow.hide();
 });
 
