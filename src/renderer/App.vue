@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <navbar></navbar>
-    <transition name="slide">
     <router-view></router-view>
-    </transition>
     <footer class="is-dark"><timer></timer></footer>
   </div>
 </template>
@@ -60,22 +58,43 @@ $link-focus-border: $primary;
 $table-cell-border-width: 0 0 0;
 $box-radius: 5px;
 
+$navbar-height: 1rem;
+
 @import '~bulma';
 @import '~buefy/src/scss/buefy';
+
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
 .table.is-scrollable tbody {
     overflow-y: scroll;
 }
 
-.main-wrapper {
-    background-color: #2d2f31;
-}
+// .main-wrapper {
+//     background-color: #2d2f31;
+// }
 
-.footer {
+footer {
     background-color: #2d2f31;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .green-glow {
     color: #01d5da;
+}
+
+.selected-wrapper {
+    background-color: #2d2f31;
+}
+
+.list {
+    background-color: #2d2f31;
+    padding-bottom: 5px;
 }
 </style>

@@ -33,7 +33,7 @@
 
         <div class="table-wrapper">            
             <table class="table is-fullwidth todo-table is-dark">                
-                <tbody class="is-dark">
+                <tbody class="is-dark">                     
                     <tr v-for="todo in currentTodos" :key="todo.number">                        
                         <td class="prio">{{todo.priority}}</td>
                         <td class="task">{{todo.text}}</td>
@@ -47,7 +47,7 @@
                             <font-awesome-icon :icon="plusSquare" class="green-glow" @click="checkTodo(todo)"/>
                             <font-awesome-icon :icon="minusSquare" class="green-glow" @click="uncheckTodo(todo)"/>
                         </td>
-                    </tr>                    
+                    </tr>                            
                 </tbody>
             </table>
         </div>
@@ -160,7 +160,7 @@ export default {
     margin: 0 15px;
     border-radius: 5px;
     border: 2px solid #01d5da;
-    height: 500px;
+    height: 100%;
     padding: 5px;
 }
 
@@ -245,5 +245,14 @@ p:hover {
         transparent 75%,
         transparent
     );
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 2s;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
 }
 </style>

@@ -1,23 +1,28 @@
 <template>
     <div class="timer-wrapper">
-        <div class="button-wrapper">
-            <div>
-                <a class="button is-primary is-small" v-on:click="startTimer">
-                    <font-awesome-icon :icon="playButton" />            
-                </a>
-                <a class="button is-primary is-small" v-on:click="stopTimer">
-                    <font-awesome-icon :icon="pauseButton" />            
-                </a>
-                <a class="button is-primary is-small" v-on:click="resetTimer">
-                    <font-awesome-icon :icon="redoButton" />            
-                </a>
-            </div>
-            <div class="time-wrapper">
-                {{currentSeconds}}                
-            </div>      
+        <div v-if="selectedLength <= 0" class="empty-timer">
+            No tasks
         </div>
-        <div>
-            <progress class="progress is-primary" :value="currentSeconds" :max="totalSeconds"></progress>
+        <div v-else>
+            <div class="button-wrapper">
+                <div>
+                    <a class="button is-primary is-small" v-on:click="startTimer">
+                        <font-awesome-icon :icon="playButton" />            
+                    </a>
+                    <a class="button is-primary is-small" v-on:click="stopTimer">
+                        <font-awesome-icon :icon="pauseButton" />            
+                    </a>
+                    <a class="button is-primary is-small" v-on:click="resetTimer">
+                        <font-awesome-icon :icon="redoButton" />            
+                    </a>
+                </div>
+                <div class="time-wrapper">
+                    {{currentSeconds}}                
+                </div>      
+            </div>
+            <div>
+                <progress class="progress is-primary" :value="currentSeconds" :max="totalSeconds"></progress>
+            </div>
         </div>        
     </div>
 </template>
@@ -47,6 +52,9 @@ export default {
         },
         totalSeconds() {
             return this.$store.state.Tasklist.currentTask.totalSeconds;
+        },
+        selectedLength() {
+            return this.$store.state.Tasklist.taskList.length;
         },
         playButton() {
             return faPlay;
@@ -118,5 +126,7 @@ export default {
 .time-wrapper {
     font-size: 20px;
     color: white;
+}
+.empty-timer {
 }
 </style>

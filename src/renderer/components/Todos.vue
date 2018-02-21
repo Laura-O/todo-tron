@@ -1,7 +1,7 @@
 <template>
   <div class="main-wrapper">    
     <div>
-       <todo-list :todos="todos" :columns="columns"></todo-list>
+       <todo-list :todos="todos" :columns="columns"></todo-list>       
     </div>    
   </div>
 </template>
