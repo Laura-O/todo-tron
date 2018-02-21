@@ -35,6 +35,12 @@ function createWindow() {
         height: 563,
         useContentSize: true,
         width: 1000,
+        autoHideMenuBar: true,
+        // frame: false,
+        title: 'TodoTron 3000',
+        webPreferences: {
+            backgroundThrottling: false,
+        },
     });
 
     mainWindow.loadURL(winURL);

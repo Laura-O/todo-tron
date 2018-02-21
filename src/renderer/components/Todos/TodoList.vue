@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="header-wrapper">     
+        <div class="header-wrapper">
             <table class="table table-header">    
                 <thead>
                 <tr>                    
