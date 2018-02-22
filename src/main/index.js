@@ -14,10 +14,21 @@ if (process.env.NODE_ENV !== 'development') {
 let mainWindow;
 let tray;
 
-const toggleWindow = () => {
+const toggleWindow = (event, bounds) => {
     if (mainWindow.isVisible()) {
         mainWindow.hide();
     } else {
+        // mainWindow.show();
+        const { x, y } = bounds;
+        const { height, width } = mainWindow.getBounds();
+        const yPosition = process.platform === 'darwin' ? y : y - height;
+        const halfWidth = width / 2;
+        mainWindow.setBounds({
+            x: x - halfWidth,
+            y: yPosition,
+            height,
+            width,
+        });
         mainWindow.show();
     }
 };
@@ -36,9 +47,10 @@ function createWindow() {
         useContentSize: true,
         width: 600,
         autoHideMenuBar: true,
-        // frame: false,
+        frame: false,
         title: 'TodoTron 3000',
-        backgroundColor: '#2d2f31',
+        transparent: true,
+        resizable: true,
         webPreferences: {
             backgroundThrottling: false,
         },
@@ -58,8 +70,8 @@ function createTray() {
         mainWindow.hide();
     });
 
-    tray.on('click', () => {
-        toggleWindow();
+    tray.on('click', (event, bounds) => {
+        toggleWindow(event, bounds);
     });
 }
 

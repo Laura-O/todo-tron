@@ -32,7 +32,7 @@
         </div>
 
         <div class="table-wrapper">            
-            <table class="table is-fullwidth todo-table is-dark">                
+            <table class="table todo-table is-dark">                
                 <tbody class="is-dark">                     
                     <tr v-for="todo in currentTodos" :key="todo.number">                        
                         <td class="prio">{{todo.priority}}</td>

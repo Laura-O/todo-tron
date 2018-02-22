@@ -33,6 +33,6 @@ export default {
     padding: 15px;
     background-color: #2d2f31;
     color: white;
-    height: 500px;
+    height: 477px;
 }
 </style>

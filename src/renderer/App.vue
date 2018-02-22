@@ -70,6 +70,10 @@ $navbar-height: 1rem;
 @import '~bulma';
 @import '~buefy/src/scss/buefy';
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 #app {
     display: flex;
     flex-direction: column;
@@ -86,7 +90,7 @@ $navbar-height: 1rem;
 
 footer {
     background-color: #2d2f31;
-    position: absolute;
+    // position: absolute;
     right: 0;
     bottom: 0;
     left: 0;

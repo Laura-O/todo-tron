@@ -89,7 +89,7 @@ export default {
 
 <style>
 .settings-wrapper {
-    height: 500px;
+    height: 477px;
     background-color: #2d2f31;
     color: white;
     padding: 15px;
