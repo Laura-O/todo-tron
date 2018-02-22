@@ -105,7 +105,7 @@ export default {
             const myNotification = new window.Notification(notification.title, notification);
 
             myNotification.onclick = () => {
-                console.log('Notification clicked');
+                this.$electron.ipcRenderer.send('open-window');
             };
         },
         convertShownTime(seconds) {
