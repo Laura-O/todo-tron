@@ -7,7 +7,7 @@
         <p>{{this.task.text}}</p>        
         <div class="field-wrapper">    
             <div class="input-field">
-                <b-input size="is-small" type="number" min="1" :max="500" value="minutes" v-model.number="minutes"/>
+                <b-input size="is-small" type="number" min="1" :max="500" value="minutes" v-model.number="totalSeconds"/>
             </div>
         </div>        
     </div>

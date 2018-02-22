@@ -12,7 +12,7 @@
             </p>
         </b-field>
          <b-field grouped v-else>
-            <b-input class="is-small" type="number" v-model="newSeconds"></b-input>
+            <b-input class="is-small" type="number" v-model.number="newSeconds"></b-input>
             <p class="control">                
                 <button class="button is-primary is-small" @click="saveSeconds">Save</button>
             </p>
