@@ -160,7 +160,7 @@ export default {
     margin: 0 15px;
     border-radius: 5px;
     border: 2px solid #01d5da;
-    height: 500px;
+    height: 400px;
     padding: 5px;
 }
 
@@ -186,7 +186,7 @@ export default {
 }
 
 .task {
-    width: 300px;
+    width: 250px;
 }
 
 .contexts,
@@ -205,11 +205,11 @@ th {
 p {
     display: inline-block;
     margin: 2px;
-    padding: 2px 3px;
+    padding: 2px 2px;
 }
 
 p.p-tags {
-    font-size: 12px;
+    font-size: 10px;
     border: 2px solid #01d5da;
     border-radius: 5px;
     transition: border-color 0.45s ease-in-out;

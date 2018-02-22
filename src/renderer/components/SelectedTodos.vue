@@ -1,12 +1,15 @@
 <template>
-    <div class="selected-wrapper">
+    <div class="selected-wrapper" v-if="selectedTasks.length > 0 || doneTasks > 0">
         <div v-for="task in selectedTasks" :key="task.taskId">
             <selected-element :task="task"></selected-element>
         </div>
         <div v-for="task in doneTasks" :key="task.taskId">
             <archived-element :task="task"></archived-element>
         </div>
-  </div>
+     </div>
+     <div class="selected-wrapper" v-else>
+
+    </div>
 </template>
 
 <script>
@@ -30,5 +33,6 @@ export default {
     padding: 15px;
     background-color: #2d2f31;
     color: white;
+    height: 500px;
 }
 </style>
