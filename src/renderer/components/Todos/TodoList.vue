@@ -36,7 +36,7 @@
                 <tbody class="is-dark">                     
                     <tr v-for="todo in currentTodos" :key="todo.number">                        
                         <td class="prio">{{todo.priority}}</td>
-                        <td class="task">{{todo.text}}</td>
+                        <td class="task" @click="cardModal(todo)">{{todo.text}}</td>
                         <td class="contexts">
                             <p class="p-tags" v-for="(context) in todo.contexts" :key="context" @click="selectContext(context)">{{context}}</p>
                             </td>
@@ -63,6 +63,8 @@ import faarchive from '@fortawesome/fontawesome-free-solid/faarchive';
 import faPlusSquare from '@fortawesome/fontawesome-free-regular/faPlusSquare';
 import faMinusSquare from '@fortawesome/fontawesome-free-regular/faMinusSquare';
 
+import CardModal from '../Global/CardModal';
+
 export default {
     data() {
         return {
@@ -73,16 +75,21 @@ export default {
     },
     name: 'todolist',
     computed: {
+        todos() {
+            return this.$store.state.Todos.todos;
+        },
         currentTodos() {
-            const searchTerm = this.searchTerm.toLowerCase();
+            const searchTerm = this.searchTerm;
             const context = this.context;
             const project = this.project;
 
             let currentTodos = this.todos;
 
-            currentTodos = currentTodos.filter((todo) =>
-                todo.text.toLowerCase().includes(searchTerm),
-            );
+            if (searchTerm) {
+                currentTodos = currentTodos.filter((todo) =>
+                    todo.text.toLowerCase().includes(searchTerm),
+                );
+            }
 
             if (context) {
                 currentTodos = currentTodos.filter((todo) => todo.contexts.indexOf(context) > -1);
@@ -117,7 +124,7 @@ export default {
         },
     },
     components: { FontAwesomeIcon },
-    props: ['todos'],
+    // props: ['todos'],
     methods: {
         open(link) {
             this.$electron.shell.openExternal(link);
@@ -140,6 +147,16 @@ export default {
                 return false;
             }
             return true;
+        },
+        cardModal(todo) {
+            this.$modal.open({
+                parent: this,
+                component: CardModal,
+                hasModalCard: true,
+                props: {
+                    todo,
+                },
+            });
         },
     },
 };
