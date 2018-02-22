@@ -1,11 +1,11 @@
 <template>
   <div class="settings-wrapper">
       <div class="single-setting-wrapper">
-        <div>Path to todo-txt file: {{path}}</div>
+        <div class="settings-header">Path to todo-txt file: {{path}}</div>
         <button class="button is-primary is-small" @click="setPath">Change path</button>        
       </div>
       <div class="single-setting-wrapper">
-        <div>Default slot length per task: {{defaultSeconds}}</div>
+        <div class="settings-header">Default slot length per task: {{defaultSeconds}}</div>
         <b-field grouped v-if="!showSecondsForm">    
             <p class="control">                
                 <button class="button is-primary is-small" @click="toggleSeconds">Change time</button>
@@ -17,6 +17,23 @@
                 <button class="button is-primary is-small" @click="saveSeconds">Save</button>
             </p>
         </b-field>
+      </div>
+      <div class="single-setting-wrapper">
+        <div class="settings-header">Show remaining time in menubar:</div>
+        <div class="block">
+            <b-radio v-model="defaultTrayTime"
+                native-value="ms">
+                Minutes:Seconds 
+            </b-radio>
+            <b-radio v-model="defaultTrayTime"
+                native-value="mm">
+                Minutes only
+            </b-radio>
+            <b-radio v-model="defaultTrayTime"
+                native-value="none">
+                None
+            </b-radio>
+        </div>
       </div>
   <div>
 
@@ -49,6 +66,15 @@ export default {
             },
             get() {
                 return this.$store.state.Settings.defaultSeconds;
+            },
+        },
+        defaultTrayTime: {
+            set(defaultTrayTime) {
+                this.$store.commit('changeDefaultTrayTime', defaultTrayTime);
+            },
+            get() {
+                console.log(this.$store.state.Settings.defaultTrayTime);
+                return this.$store.state.Settings.defaultTrayTime;
             },
         },
     },

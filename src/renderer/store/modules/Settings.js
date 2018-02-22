@@ -3,6 +3,7 @@ const settings = require('electron-settings');
 const state = {
     path: '',
     defaultSeconds: 25,
+    defaultTrayTime: 'ms',
 };
 
 const mutations = {
@@ -14,6 +15,10 @@ const mutations = {
         state.defaultSeconds = seconds;
         settings.set('defaultSeconds', seconds);
     },
+    changeDefaultTrayTime(state, setting) {
+        state.defaultTrayTime = setting;
+        settings.set('defaultTrayTime', setting);
+    },
 };
 
 const actions = {
@@ -22,6 +27,9 @@ const actions = {
     },
     changeDefaultSeconds({ commit }, payload) {
         commit('changeDefaultSeconds', payload);
+    },
+    changeDefaultTrayTime({ commit }, payload) {
+        commit('changeDefaultTrayTime', payload);
     },
 };
 

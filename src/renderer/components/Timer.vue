@@ -33,6 +33,8 @@ import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import faPlay from '@fortawesome/fontawesome-pro-regular/faPlay';
 import faPause from '@fortawesome/fontawesome-pro-regular/faPause';
 import faRedo from '@fortawesome/fontawesome-pro-regular/faRedo';
+import moment from 'moment';
+import 'moment-duration-format';
 
 export default {
     name: 'timer',
@@ -89,7 +91,19 @@ export default {
             }
         },
         updateTray(seconds) {
-            this.$electron.ipcRenderer.send('update-timer', seconds.toString());
+            const traySetting = this.$store.state.Settings.defaultTrayTime;
+            let showTime = '';
+            switch (traySetting) {
+            case 'mm':
+                showTime = moment.duration(seconds, 'seconds').format('mm');
+                break;
+            case 'none':
+                showTime = '';
+                break;
+            default:
+                showTime = moment.duration(seconds, 'seconds').format('mm:ss');
+            }
+            this.$electron.ipcRenderer.send('update-timer', showTime);
         },
         finishTask() {
             this.$store.commit('archiveTask');

@@ -79,6 +79,9 @@ export default {
                 this.readFile(path);
             }
         }
+        if (storage.has('defaultTrayTime')) {
+            this.$store.commit('changeDefaultTrayTime', storage.get('defaultTrayTime'));
+        }
     },
 };
 </script>
