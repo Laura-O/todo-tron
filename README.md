@@ -1,6 +1,17 @@
-# electron-todo-txt
+<div align="center">
+<br>
+<img width="150" src="/docs/todotron.png" alt="todotron">
+<br>
+<br>
+</div>
 
-> An electron-vue project
+<div align="center">
+
+[![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/designed-in-etch-a-sketch.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+
+</div>
 
 #### Build Setup
 
