@@ -17,7 +17,7 @@
                     </a>
                 </div>
                 <div class="time-wrapper">
-                    {{currentSeconds}}                
+                    {{this.convertShownTime(currentSeconds)}}   
                 </div>      
             </div>
             <div>
@@ -91,19 +91,7 @@ export default {
             }
         },
         updateTray(seconds) {
-            const traySetting = this.$store.state.Settings.defaultTrayTime;
-            let showTime = '';
-            switch (traySetting) {
-            case 'mm':
-                showTime = moment.duration(seconds, 'seconds').format('mm');
-                break;
-            case 'none':
-                showTime = '';
-                break;
-            default:
-                showTime = moment.duration(seconds, 'seconds').format('mm:ss');
-            }
-            this.$electron.ipcRenderer.send('update-timer', showTime);
+            this.$electron.ipcRenderer.send('update-timer', this.convertShownTime(seconds));
         },
         finishTask() {
             this.$store.commit('archiveTask');
@@ -119,6 +107,21 @@ export default {
             myNotification.onclick = () => {
                 console.log('Notification clicked');
             };
+        },
+        convertShownTime(seconds) {
+            const traySetting = this.$store.state.Settings.defaultTrayTime;
+            let showTime = '';
+            switch (traySetting) {
+            case 'mm':
+                showTime = moment.duration(seconds, 'seconds').format('mm');
+                break;
+            case 'none':
+                showTime = '';
+                break;
+            default:
+                showTime = moment.duration(seconds, 'seconds').format('mm:ss');
+            }
+            return showTime;
         },
     },
 };
