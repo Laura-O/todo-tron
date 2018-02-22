@@ -73,7 +73,6 @@ export default {
                 this.$store.commit('changeDefaultTrayTime', defaultTrayTime);
             },
             get() {
-                console.log(this.$store.state.Settings.defaultTrayTime);
                 return this.$store.state.Settings.defaultTrayTime;
             },
         },

@@ -48,12 +48,14 @@ function createWindow() {
         width: 600,
         autoHideMenuBar: true,
         frame: false,
+        show: false,
         title: 'TodoTron 3000',
         transparent: true,
         resizable: true,
         webPreferences: {
             backgroundThrottling: false,
         },
+        icon: `${__static}/icons/mac/icon.icns`,
     });
 
     mainWindow.loadURL(winURL);

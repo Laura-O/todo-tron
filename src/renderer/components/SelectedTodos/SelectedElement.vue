@@ -7,7 +7,7 @@
         <p>{{this.task.text}}</p>        
         <div class="field-wrapper">    
             <div class="input-field">
-                <b-input size="is-small" type="number" min="1" :max="59" v-model="totalSeconds"/>
+                <b-input size="is-small" type="number" min="1" :max="500" value="minutes" v-model.number="minutes"/>
             </div>
         </div>        
     </div>
@@ -18,6 +18,9 @@ import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import faArrowSquareUp from '@fortawesome/fontawesome-pro-regular/faArrowSquareUp';
 import faArrowSquareDown from '@fortawesome/fontawesome-pro-regular/faArrowSquareDown';
 
+// import moment from 'moment';
+// import 'moment-duration-format';
+
 export default {
     name: 'selected-element',
     data() {
@@ -26,6 +29,12 @@ export default {
     components: { FontAwesomeIcon },
     props: ['task'],
     computed: {
+        minutes: {
+            get() {
+                const minutes = Math.floor(this.totalSeconds / 60);
+                return minutes;
+            },
+        },
         upArrow() {
             return faArrowSquareUp;
         },
@@ -37,7 +46,7 @@ export default {
                 const item = this.$store.state.Tasklist.taskList.filter(
                     (todo) => todo.taskId === this.task.taskId,
                 );
-                return item[0].totalSeconds;
+                return Number.parseInt(item[0].totalSeconds, 10);
             },
             set(newValue) {
                 this.$store.commit('updateTotalSeconds', { newValue, id: this.task.taskId });
