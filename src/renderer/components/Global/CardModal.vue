@@ -6,8 +6,7 @@
                             <b-input
                                 type="text"
                                 value="text"
-                                v-model="text"                                
-                                placeholder="Your password"
+                                v-model="text"                                                                
                                 required>
                             </b-input>
                         </b-field>
@@ -32,6 +31,8 @@ export default {
     methods: {
         save(text) {
             this.$store.commit('changeTodo', { number: this.todo.number, text });
+            this.$parent.close();
+            this.$forceUpdate();
         },
     },
 };

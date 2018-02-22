@@ -45,7 +45,7 @@
                         </td>
                         <td>
                             <font-awesome-icon :icon="plusSquare" class="green-glow" @click="checkTodo(todo)"/>
-                            <font-awesome-icon :icon="minusSquare" class="green-glow" @click="uncheckTodo(todo)"/>
+                            <font-awesome-icon :icon="xSquare" class="green-glow" @click="uncheckTodo(todo)"/>
                         </td>
                     </tr>                            
                 </tbody>
@@ -62,6 +62,7 @@ import falistul from '@fortawesome/fontawesome-free-solid/falistul';
 import faarchive from '@fortawesome/fontawesome-free-solid/faarchive';
 import faPlusSquare from '@fortawesome/fontawesome-free-regular/faPlusSquare';
 import faMinusSquare from '@fortawesome/fontawesome-free-regular/faMinusSquare';
+import faTimesSquare from '@fortawesome/fontawesome-pro-regular/faTimesSquare';
 
 import CardModal from '../Global/CardModal';
 
@@ -121,6 +122,9 @@ export default {
         },
         minusSquare() {
             return faMinusSquare;
+        },
+        xSquare() {
+            return faTimesSquare;
         },
     },
     components: { FontAwesomeIcon },
