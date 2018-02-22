@@ -143,6 +143,7 @@ export default {
 .time-wrapper {
     font-size: 20px;
     color: white;
+    width: 50px;
 }
 .empty-timer {
     text-align: center;
