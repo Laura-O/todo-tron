@@ -1,14 +1,15 @@
 <template>
-    <div class="selected-wrapper" v-if="selectedTasks.length > 0 || doneTasks > 0">
+    <div class="selected-wrapper" v-if="selectedTasks.length > 0 || doneTasks.length > 0">
         <div v-for="task in selectedTasks" :key="task.taskId">
             <selected-element :task="task"></selected-element>
-        </div>
-        <div v-for="task in doneTasks" :key="task.taskId">
+        </div>        
+        <div v-for="task in doneTasks" :key="task.taskId">            
             <archived-element :task="task"></archived-element>
         </div>
      </div>
      <div class="selected-wrapper" v-else>
-
+         <div></div>
+         <button @click="showArchive">show</button>         
     </div>
 </template>
 
@@ -20,7 +21,11 @@ import ArchivedElement from './SelectedTodos/ArchivedElement';
 export default {
     name: 'selected-todos',
     components: { SelectedElement, ArchivedElement },
-    methods: {},
+    methods: {
+        showArchive() {
+            console.log(this.doneTasks);
+        },
+    },
     computed: mapGetters({
         selectedTasks: 'allTasks',
         doneTasks: 'doneTasks',

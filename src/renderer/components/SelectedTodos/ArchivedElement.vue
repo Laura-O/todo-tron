@@ -4,7 +4,7 @@
             <font-awesome-icon :icon="upArrow" />
             <font-awesome-icon :icon="downArrow"/>
         </div>
-        <p>{{this.task.text}}</p>        
+        <p>{{this.task.text}}</p>
        <div class="field-wrapper">    
             <div class="input-field">
                 <b-input size="is-small" type="number" min="1" :max="59" disabled/>
@@ -20,11 +20,11 @@ import faArrowSquareDown from '@fortawesome/fontawesome-pro-regular/faArrowSquar
 
 export default {
     name: 'archived-element',
+    props: ['task'],
     data() {
         return {};
     },
     components: { FontAwesomeIcon },
-    props: ['task'],
     computed: {
         upArrow() {
             return faArrowSquareUp;
