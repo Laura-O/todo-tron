@@ -1,7 +1,7 @@
 <template>
     <div class="timer-wrapper">
         <div v-if="selectedLength <= 0" class="empty-timer">
-            Please select a task
+            No task selected.
         </div>
         <div v-else>
             <div class="button-wrapper">

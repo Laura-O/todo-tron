@@ -2,8 +2,8 @@ const settings = require('electron-settings');
 
 const state = {
     path: '',
-    defaultSeconds: 25,
-    defaultTrayTime: 'ms',
+    defaultSeconds: null,
+    defaultTrayTime: '',
 };
 
 const mutations = {

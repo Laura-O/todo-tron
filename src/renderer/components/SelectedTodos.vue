@@ -8,8 +8,7 @@
         </div>
      </div>
      <div class="selected-wrapper" v-else>
-         <div></div>
-         <button @click="showArchive">show</button>         
+         <div>Please select a task!</div>              
     </div>
 </template>
 
