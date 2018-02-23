@@ -35,7 +35,7 @@
             <table class="table todo-table is-dark">                
                 <tbody class="is-dark">                     
                     <tr v-for="todo in currentTodos" :key="todo.number">                        
-                        <td class="prio">{{todo.priority}}</td>
+                        <td class="prio"><p v-if="todo.priority.length !== 0">{{todo.priority}}</p></td>
                         <td class="task" @click="cardModal(todo)">{{todo.text}}</td>
                         <td class="contexts">
                             <p class="p-tags" v-for="(context) in todo.contexts" :key="context" @click="selectContext(context)">{{context}}</p>
@@ -185,6 +185,11 @@ export default {
     padding: 5px;
 }
 
+.table thead td,
+.table thead th {
+    border: none;
+}
+
 .header-wrapper {
     margin: 0 15px;
     padding: 5px;
@@ -206,6 +211,11 @@ export default {
     width: 10px;
 }
 
+td.prio,
+td.contexts {
+    padding-left: 0px;
+}
+
 .task {
     width: 250px;
 }
@@ -213,6 +223,12 @@ export default {
 .contexts,
 .projects {
     width: 100px;
+}
+
+.prio p {
+    font-size: 12px;
+    border: 2px solid #01d5da;
+    border-radius: 15%;
 }
 
 th {
