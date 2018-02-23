@@ -33,6 +33,7 @@ import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import faPlay from '@fortawesome/fontawesome-pro-regular/faPlay';
 import faPause from '@fortawesome/fontawesome-pro-regular/faPause';
 import faRedo from '@fortawesome/fontawesome-pro-regular/faRedo';
+import path from 'path';
 import moment from 'moment';
 import 'moment-duration-format';
 
@@ -51,6 +52,9 @@ export default {
             set(newValue) {
                 this.$store.commit('updateCurrentSeconds', newValue);
             },
+        },
+        taskTitle() {
+            return this.$store.state.Tasklist.currentTask.text;
         },
         totalSeconds() {
             return this.$store.state.Tasklist.currentTask.totalSeconds;
@@ -98,8 +102,9 @@ export default {
         },
         sendTaskFinishedNotification() {
             const notification = {
-                title: 'Task is done',
-                body: 'Your task is done!',
+                title: 'Your time is over',
+                body: `Task: ${this.taskTitle}`,
+                icon: path.join(__dirname, '../assets/main_logo-min.png'),
             };
 
             const myNotification = new window.Notification(notification.title, notification);
