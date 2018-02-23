@@ -1,3 +1,5 @@
+# TodoTron 3000
+
 <div align="center">
 <br>
 <img width="150" src="/docs/todotron.png" alt="todotron">
@@ -12,6 +14,27 @@
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 </div>
+
+## Overview
+
+TodoTron 3000 is a graphical user interface which can be used to interact with todo lists created with todo.txt.
+
+### Features
+
+* Add todo.txt entries to a tasklist.
+* Set time for each tasklist entry
+* Start the timer and start working on the task
+* The app will send a notification when the time has run out
+* The remaining time can also be displayed in the menu bar (optional, can be turned on/off)
+
+### Built with
+
+* Electron
+* Vue.js, Vuex and Vue-Router
+* SASS and CSS
+* Webpack
+* Karma + Mocha
+* Electron-settings for storing data locally
 
 #### Build Setup
 
