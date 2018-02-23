@@ -1,11 +1,11 @@
 <template>
   <div class="settings-wrapper">
       <div class="single-setting-wrapper">
-        <div class="settings-header">Path to todo-txt file: {{path}}</div>
+        <div class="settings-header"><p>Path to todo-txt file:</p> {{path}}</div>
         <button class="button is-primary is-small" @click="setPath">Change path</button>        
       </div>
       <div class="single-setting-wrapper">
-        <div class="settings-header">Default slot length per task: {{defaultSeconds}}</div>
+        <div class="settings-header"><p>Default slot length per task:</p> {{defaultSeconds}}</div>
         <b-field grouped v-if="!showSecondsForm">    
             <p class="control">                
                 <button class="button is-primary is-small" @click="toggleSeconds">Change time</button>
@@ -19,7 +19,7 @@
         </b-field>
       </div>
       <div class="single-setting-wrapper">
-        <div class="settings-header">Show remaining time in menubar:</div>
+        <div class="settings-header"><p>Show remaining time in menubar:</p></div>
         <div class="block">
             <b-radio v-model="defaultTrayTime"
                 native-value="ms">
@@ -125,6 +125,11 @@ export default {
     padding: 10px;
     border: 1px solid #01d5da;
     border-radius: 5px;
+}
+
+.settings-header p {
+    font-size: 16px;
+    font-weight: 900;
 }
 
 .control-wrapper {
