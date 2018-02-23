@@ -20,11 +20,7 @@ import ArchivedElement from './SelectedTodos/ArchivedElement';
 export default {
     name: 'selected-todos',
     components: { SelectedElement, ArchivedElement },
-    methods: {
-        showArchive() {
-            console.log(this.doneTasks);
-        },
-    },
+    methods: {},
     computed: mapGetters({
         selectedTasks: 'allTasks',
         doneTasks: 'doneTasks',

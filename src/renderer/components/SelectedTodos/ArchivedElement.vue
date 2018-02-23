@@ -39,7 +39,7 @@ export default {
 <style scoped>
 .archivedselected {
     font-size: 14px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     display: grid;
     grid-template-columns: 50px 1fr 100px;
     color: grey;

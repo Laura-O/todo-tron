@@ -92,7 +92,9 @@ export default {
 <style scoped>
 .singleselected {
     font-size: 14px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #f84aa7;
     display: grid;
     grid-template-columns: 50px 1fr 100px;
 }

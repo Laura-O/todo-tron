@@ -44,8 +44,8 @@
                                 <p class="p-tags" v-for="(project) in todo.projects" :key="project" @click="selectProject(project)">{{project}}</p>
                         </td>
                         <td>
-                            <font-awesome-icon :icon="plusSquare" class="green-glow" @click="checkTodo(todo)"/>
-                            <font-awesome-icon :icon="xSquare" class="green-glow" @click="uncheckTodo(todo)"/>
+                            <font-awesome-icon :icon="plusSquare" class="green-glow add-x-button" @click="checkTodo(todo)"/>
+                            <font-awesome-icon :icon="xSquare" class="green-glow add-x-button" @click="uncheckTodo(todo)"/>
                         </td>
                     </tr>                            
                 </tbody>
@@ -209,6 +209,14 @@ export default {
 
 .prio {
     width: 10px;
+}
+
+.add-x-button {
+    transition: color 0.45s ease-in-out;
+}
+
+.add-x-button:hover {
+    color: #f84aa7;
 }
 
 td.prio,
