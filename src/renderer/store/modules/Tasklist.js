@@ -24,7 +24,8 @@ const mutations = {
         state.taskList.push(newTask);
     },
     removeTask(state, todo) {
-        state.taskList.splice(state.taskList.indexOf(todo), 1);
+        const index = state.taskList.findIndex((task) => task.todoId === todo.number);
+        state.taskList.splice(index, 1);
     },
     setTime(state, { todo, seconds }) {
         state.assignedTime[todo.number] = seconds;
