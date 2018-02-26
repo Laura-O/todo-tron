@@ -17,7 +17,7 @@
                     </a>
                 </div>
                 <div class="time-wrapper">
-                    {{this.convertShownTime(currentSeconds)}}   
+                    {{this.convertShownTime(currentSeconds)}}
                 </div>      
             </div>
             <div>
@@ -134,25 +134,25 @@ export default {
 
 <style>
 .timer-wrapper {
-    background-color: #2d2f31;
-    height: 80px;
-    padding: 0px 10px;
-    justify-content: center;
+  background-color: #2d2f31;
+  height: 80px;
+  padding: 0px 10px;
+  justify-content: center;
 }
 .button-wrapper {
-    display: flex;
-    justify-content: center;
-    justify-content: space-around;
-    padding: 10px;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  padding: 10px;
 }
 .time-wrapper {
-    font-size: 20px;
-    color: white;
-    width: 50px;
+  font-size: 20px;
+  color: white;
+  width: 50px;
 }
 .empty-timer {
-    text-align: center;
-    padding: 15px;
-    color: #f84aa7;
+  text-align: center;
+  padding: 15px;
+  color: #f84aa7;
 }
 </style>

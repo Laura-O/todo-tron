@@ -7,7 +7,7 @@
         <p>{{this.task.text}}</p>        
         <div class="field-wrapper">    
             <div class="input-field">
-                <b-input size="is-small" type="number" min="1" :max="500" value="minutes" v-model.number="totalSeconds"/>
+                <b-input size="is-small" type="number" min="1" :max="500" value="minutes" v-model="minutes"/>
             </div>
         </div>        
     </div>
@@ -31,8 +31,14 @@ export default {
     computed: {
         minutes: {
             get() {
-                const minutes = Math.floor(this.totalSeconds / 60);
-                return minutes;
+                const item = this.$store.state.Tasklist.taskList.filter(
+                    (todo) => todo.taskId === this.task.taskId,
+                );
+                return Number.parseInt(item[0].totalSeconds, 10) / 60;
+            },
+            set(newValue) {
+                const newSeconds = newValue * 60;
+                this.$store.commit('updateTotalSeconds', { newSeconds, id: this.task.taskId });
             },
         },
         upArrow() {
@@ -41,17 +47,17 @@ export default {
         downArrow() {
             return faArrowSquareDown;
         },
-        totalSeconds: {
-            get() {
-                const item = this.$store.state.Tasklist.taskList.filter(
-                    (todo) => todo.taskId === this.task.taskId,
-                );
-                return Number.parseInt(item[0].totalSeconds, 10);
-            },
-            set(newValue) {
-                this.$store.commit('updateTotalSeconds', { newValue, id: this.task.taskId });
-            },
-        },
+        // totalSeconds: {
+        //     get() {
+        //         const item = this.$store.state.Tasklist.taskList.filter(
+        //             (todo) => todo.taskId === this.task.taskId,
+        //         );
+        //         return Number.parseInt(item[0].totalSeconds, 10);
+        //     },
+        //     set(newValue) {
+        //         this.$store.commit('updateTotalSeconds', { newValue, id: this.task.taskId });
+        //     },
+        // },
         seconds: {
             get() {
                 return this.task.seconds;
@@ -91,15 +97,15 @@ export default {
 
 <style scoped>
 .singleselected {
-    font-size: 14px;
-    margin-bottom: 5px;
-    padding-bottom: 3px;
-    border-bottom: 1px solid #f84aa7;
-    display: grid;
-    grid-template-columns: 50px 1fr 100px;
+  font-size: 14px;
+  margin-bottom: 5px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #f84aa7;
+  display: grid;
+  grid-template-columns: 50px 1fr 100px;
 }
 
 .field-wrapper {
-    display: flex;
+  display: flex;
 }
 </style>

@@ -62,10 +62,10 @@ export default {
         },
         defaultSeconds: {
             set(value) {
-                this.$store.commit('changeDefaultSeconds', value);
+                this.$store.commit('changeDefaultSeconds', value * 60);
             },
             get() {
-                return this.$store.state.Settings.defaultSeconds;
+                return this.$store.state.Settings.defaultSeconds / 60;
             },
         },
         defaultTrayTime: {
@@ -79,7 +79,7 @@ export default {
     },
     methods: {
         saveSeconds() {
-            this.$store.commit('changeDefaultSeconds', this.newSeconds);
+            this.$store.commit('changeDefaultSeconds', this.newSeconds * 60);
             this.toggleSeconds();
         },
         toggleSeconds() {
@@ -114,27 +114,27 @@ export default {
 
 <style>
 .settings-wrapper {
-    height: 477px;
-    background-color: #2d2f31;
-    color: white;
-    padding: 15px;
+  height: 477px;
+  background-color: #2d2f31;
+  color: white;
+  padding: 15px;
 }
 
 .single-setting-wrapper {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #01d5da;
-    border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #01d5da;
+  border-radius: 5px;
 }
 
 .settings-header p {
-    font-size: 16px;
-    font-weight: 900;
+  font-size: 16px;
+  font-weight: 900;
 }
 
 .control-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 </style>

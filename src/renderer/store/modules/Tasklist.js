@@ -43,14 +43,14 @@ const mutations = {
         newTaskList[index].seconds = newValue;
         state.taskList = newTaskList;
     },
-    updateTotalSeconds(state, { newValue, id }) {
+    updateTotalSeconds(state, { newSeconds, id }) {
         const index = state.taskList.findIndex((task) => task.taskId === id);
         const newTaskList = state.taskList;
-        newTaskList[index].totalSeconds = newValue;
+        newTaskList[index].totalSeconds = newSeconds;
         state.taskList = newTaskList;
         if (index === 0) {
-            state.currentTask.totalSeconds = newValue;
-            state.currentTask.seconds = newValue;
+            state.currentTask.totalSeconds = newSeconds;
+            state.currentTask.seconds = newSeconds;
         }
     },
     moveTaskUp(state, id) {
