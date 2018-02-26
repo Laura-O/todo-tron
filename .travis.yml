@@ -5,8 +5,7 @@ sudo: required
 dist: trusty
 language: c
 matrix:
-  include:
-  - os: osx
+  include:  
   - os: linux
     env: CC=clang CXX=clang++ npm_config_clang=1
     compiler: clang
@@ -29,15 +28,15 @@ before_install:
 install:
 #- export DISPLAY=':99.0'
 #- Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-- nvm install 7
+- nvm install 8
 - curl -o- -L https://yarnpkg.com/install.sh | bash
 - source ~/.bashrc
 - npm install -g xvfb-maybe
-- yarn
+#- yarn
 script:
 #- xvfb-maybe node_modules/.bin/karma start test/unit/karma.conf.js
 #- yarn run pack && xvfb-maybe node_modules/.bin/mocha test/e2e
-- yarn run build
+- npm run build
 branches:
   only:
   - master

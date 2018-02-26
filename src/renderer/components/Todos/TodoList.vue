@@ -172,136 +172,136 @@ export default {
 
 <style scoped>
 .top-wrapper {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 40px 0 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 40px 0 20px;
 }
 
 .todo-table {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 .table-wrapper {
-  margin: 0 15px;
-  border-radius: 5px;
-  border: 2px solid #01d5da;
-  height: 400px;
-  padding: 5px;
+    margin: 0 15px;
+    border-radius: 5px;
+    border: 2px solid #01d5da;
+    height: 400px;
+    padding: 5px;
 }
 
 .table thead td,
 .table thead th {
-  border: none;
+    border: none;
 }
 
 .header-wrapper {
-  margin: 0 15px;
-  padding: 5px;
-  border: none;
+    margin: 0 15px;
+    padding: 5px;
+    border: none;
 }
 
 .table {
-  table-layout: fixed;
-  font-size: 14px;
-  background-color: #2d2f31;
-  color: white;
+    table-layout: fixed;
+    font-size: 14px;
+    background-color: #2d2f31;
+    color: white;
 }
 
 .table-header {
-  margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .prio {
-  width: 10px;
+    width: 10px;
 }
 
 .add-x-button {
-  transition: color 0.45s ease-in-out;
+    transition: color 0.45s ease-in-out;
 }
 
 .add-x-button:hover {
-  color: #f84aa7;
+    color: #f84aa7;
 }
 
 td.prio,
 td.contexts {
-  padding-left: 0px;
+    padding-left: 0px;
 }
 
 .task {
-  width: 250px;
+    width: 250px;
 }
 
 .contexts,
 .projects {
-  width: 100px;
+    width: 100px;
 }
 
 .prio p {
-  font-size: 12px;
-  border: 2px solid #01d5da;
-  border-radius: 15%;
+    font-size: 12px;
+    border: 2px solid #01d5da;
+    border-radius: 15%;
 }
 
 th {
-  border: none;
+    border: none;
 }
 
 .todo-table tr {
-  border-bottom: 1px solid #f84aa7;
+    border-bottom: 1px solid #f84aa7;
 }
 
 p {
-  display: inline-block;
-  margin: 2px;
-  padding: 2px 2px;
+    display: inline-block;
+    margin: 2px;
+    padding: 2px 2px;
 }
 
 p.p-tags {
-  font-size: 10px;
-  border: 2px solid #01d5da;
-  border-radius: 5px;
-  transition: border-color 0.45s ease-in-out;
+    font-size: 10px;
+    border: 2px solid #01d5da;
+    border-radius: 5px;
+    transition: border-color 0.45s ease-in-out;
 }
 
 p:hover {
-  border-color: #f84aa7;
+    border-color: #f84aa7;
 }
 
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+    width: 10px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  background-color: #01d5da;
-  background-image: -webkit-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.2) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0.2) 75%,
-    transparent 75%,
-    transparent
-  );
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: #01d5da;
+    background-image: -webkit-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 75%,
+        transparent
+    );
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 2s;
+    transition: opacity 2s;
 }
 .fade-enter,
 .fade-leave-to {
-  opacity: 0;
+    opacity: 0;
 }
 </style>
