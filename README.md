@@ -19,6 +19,12 @@
 
 TodoTron 3000 is a graphical user interface which can be used to interact with todo lists created with todo.txt.
 
+## Screenshot
+
+<p align="center">
+<img src="./images/todotron.png" width="400">
+</p>
+
 ### Features
 
 * Add todo.txt entries to a tasklist.
